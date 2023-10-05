@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1696470132068" clover="3.2.0">
-  <project timestamp="1696470132069" name="All files">
+<coverage generated="1696471412327" clover="3.2.0">
+  <project timestamp="1696471412327" name="All files">
     <metrics statements="30" coveredstatements="22" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2" elements="35" coveredelements="26" complexity="0" loc="30" ncloc="30" packages="1" files="1" classes="1"/>
     <file name="ship.js" path="/Users/jonathan/Battleship/src/ship.js">
       <metrics statements="30" coveredstatements="22" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
