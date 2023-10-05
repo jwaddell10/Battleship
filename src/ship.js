@@ -14,21 +14,17 @@ class Ship {
 
     shipWasSunk(Ship) {
         if (this.numberOfHits === this.length) {
-            console.log(ship1, 'this ship is sunk');
-            return true
+            console.log(Ship, 'this ship is sunk');
+            return true;
         } else {
             console.log(Ship, 'this ship is not sunk');
-            return false
+            return false;
         }
     }
 }
 
-const ship1 = new Ship(4, 0);
+const ship1 = new Ship(4, 0, false);
 ship1.shipWasHit();
 ship1.shipWasHit();
-ship1.shipWasSunk();
-ship1.shipWasHit();
-ship1.shipWasHit();
-ship1.shipWasSunk(ship1);
 
-export default Ship; 
+export default Ship
