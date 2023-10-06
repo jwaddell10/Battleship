@@ -25,6 +25,11 @@ class gameBoard {
         console.log(gameBoardArray);
         console.log(ship1);
     }
+    testFunction() {
+        if (1 === 1) {
+            console.log('this equals 1');
+        }
+    }
 }
 
 //gameboard
