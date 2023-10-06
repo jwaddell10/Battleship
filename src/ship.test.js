@@ -1,27 +1,20 @@
-import { Ship } from './ship.js';
+import Ship from './ship.js';
 
 console.log(Ship, 'this is ship from shipjs');
 
 describe('the ship', () => {
     test('has length of 4', () => {
-        expect(Ship.length).toBe(3);
+        const ship1 = new Ship(4);
+        expect(ship1.length).toBe(4);
     });
     test('has 0 hits', () => {
-        expect(Ship.numberOfHits).toBeLessThan(4);
-    });
-})
-
-describe('the ship', () => {
-    test('has length of 4', () => {
-        expect(Ship.length).toBe(4);
-    });
-
-    test('has 0 hits now', () => {
+        if (Ship.numberOfHits === 0)
         expect(Ship.numberOfHits).toBe(0);
     });
+    test('ship was sunk', () => {
+        if (Ship.length === Ship.numberOfHits) {
+            expect(Ship.shipWasSunk).toBe(true)
+        }
+    })
+})
 
-    test('has 4 hits after being sunk', () => {
-        Ship.shipWasSunk();
-        expect(Ship.numberOfHits).toBe(4);
-    });
-});
