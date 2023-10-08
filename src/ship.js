@@ -5,6 +5,11 @@ class Ship {
         this.isSunk = isSunk;
     }
 
+    createShip() {
+        const ship = new Ship();
+        console.log(ship, 'this is a ship');
+    }
+
     shipWasHit() {
         // if ship was hit
         this.numberOfHits++

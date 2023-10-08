@@ -1,8 +1,9 @@
 import Ship from './ship.js'
 
 class gameBoard {
-    constructor () {
+    constructor (shipLocation) {
         this.gameBoardArray = [];
+        this.shipLocation = shipLocation;
     }
 
     createBoard() {
@@ -12,27 +13,32 @@ class gameBoard {
     for (let x = 0; x < rows; x++) {
         this.gameBoardArray[x] = [];
         for (let y = 0; y < columns; y++) {
-            this.gameBoardArray[x][y] = y;
+            this.gameBoardArray[x][y] = '.';
         }
     }
-    console.log(this.gameBoardArray, 'this is gameboardarray');
+    console.log(this.gameBoardArray, 'this is gameboardarray from createboard');
     return this.gameBoardArray;
     }
 
-    placeShips() {
+    placeShips(ship, x, y, orientation) {
+        const gameBoard1 = new gameBoard([0, 0]);
+        gameBoard1.createBoard();
+        console.log(gameBoard1, 'this is gameboard1 after create board');
         const ship1 = new Ship(4, 0, false);
-        ship1.push(gameBoardArray);
-        console.log(gameBoardArray);
-        console.log(ship1);
-    }
-    testFunction() {
-        if (1 === 1) {
-            console.log('this equals 1');
-        }
+        console.log(gameBoard1, 'this is gameboard after place ships hopefully');
+
+        return gameBoard1;        
+        // create a ship with Ship Class
+        // using ship's length property, place it on grid index
+        // have it take up as many spaces as ship's lengthx
+        console.log(this.gameBoardArray, 'this is gamearray');
+        console.log(this.gameBoardArray, 'this is a coordinate?');
     }
 }
 
 //gameboard
+
+//generate random number
 
 //needs to be able to place ships
 
@@ -42,8 +48,7 @@ class gameBoard {
 
 //should be able to keep track of all hits
 const gameBoard1 = new gameBoard();
-gameBoard1.createBoard();
 gameBoard1.placeShips();
-console.log(gameBoard1, 'this is gameboard1');
+
 
 export default gameBoard;
