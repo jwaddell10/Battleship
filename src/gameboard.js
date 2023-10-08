@@ -25,7 +25,7 @@ class gameBoard {
         gameBoard1.createBoard();
         console.log(gameBoard1, 'this is gameboard1 after create board');
         const ship1 = new Ship(4, 0, false);
-        console.log(gameBoard1, 'this is gameboard after place ships hopefully');     
+        console.log(ship1, 'this is my created ship');
         // create a ship with Ship Class
         // create a board with gameboard class
         // using ship's length property, place it on grid index
