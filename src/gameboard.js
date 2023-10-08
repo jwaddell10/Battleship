@@ -20,17 +20,16 @@ class gameBoard {
     return this.gameBoardArray;
     }
 
-    placeShips(ship, x, y, orientation) {
+    placeShips() {
         const gameBoard1 = new gameBoard([0, 0]);
         gameBoard1.createBoard();
         console.log(gameBoard1, 'this is gameboard1 after create board');
         const ship1 = new Ship(4, 0, false);
         console.log(gameBoard1, 'this is gameboard after place ships hopefully');     
         // create a ship with Ship Class
+        // create a board with gameboard class
         // using ship's length property, place it on grid index
-        // have it take up as many spaces as ship's lengthx
-        console.log(this.gameBoardArray, 'this is gamearray');
-        console.log(this.gameBoardArray, 'this is a coordinate?');
+        // have it take up as many spaces as ship's lengths
     }
 }
 
