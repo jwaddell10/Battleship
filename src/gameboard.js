@@ -2,30 +2,31 @@ import Ship from './ship.js'
 
 class gameBoard {
     constructor (shipLocation) {
-        this.gameBoardArray = [];
+        this.board = [];
         this.shipLocation = shipLocation;
     }
 
     createBoard() {
+    let board = []
     let rows = 10;
     let columns = 10; 
 
     for (let x = 0; x < rows; x++) {
-        this.gameBoardArray[x] = [];
+        board[x] = [];
         for (let y = 0; y < columns; y++) {
-            this.gameBoardArray[x][y] = '.';
+            board[x][y] = '.';
         }
     }
-    console.log(this.gameBoardArray, 'this is gameboardarray from createboard');
-    return this.gameBoardArray;
+    console.log(board, 'this is gameboardarray from createboard');
+    return board;
     }
 
     placeShips() {
-        const gameBoard1 = new gameBoard([0, 0]);
-        gameBoard1.createBoard();
-        console.log(gameBoard1, 'this is gameboard1 after create board');
+        const board = this.createBoard();
         const ship1 = new Ship(4, 0, false);
-        console.log(ship1, 'this is my created ship');
+
+        board[0][1] = ship1;
+         console.log(board, 'this is with a ship')
         // create a ship with Ship Class
         // create a board with gameboard class
         // using ship's length property, place it on grid index
