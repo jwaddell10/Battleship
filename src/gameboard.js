@@ -59,7 +59,7 @@ class gameBoard {
 //should be able to keep track of all hits
 const gameBoard1 = new gameBoard();
 gameBoard1.placeShips();
-gameBoard1.receiveAttack();
+// gameBoard1.receiveAttack();
 
 
 export default gameBoard;

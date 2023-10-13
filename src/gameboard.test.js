@@ -1,18 +1,27 @@
 import gameBoard from "./gameboard.js";
+import Ship from './ship.js'
 
 describe('the gameboard', () => {
+    let gameboard1;
+    let board;
+    let newShip;
+
+    beforeEach(() => {
+        gameboard1 = new gameBoard();
+        board = gameboard1.createBoard();
+        newShip = new Ship(4, 0, false, 0, 4);
+        board[newShip.x][newShip.y] = newShip;
+    });
+
     test('has 10 rows', () => {
-        const gameBoard1 = new gameBoard(10);
-        expect(gameBoard1.rows).toBe(10);
+        expect(board.length).toBe(10);
     });
+    
     test('has 10 columns', () => {
-        const gameBoard1 = new gameBoard(10, 10);
-        expect(gameBoard1.columns).toBe(10);
+        expect(board[0].length).toBe(10);
     });
 
-    const gameBoardArray = gameBoard.createBoard();
-    test('the gameboard array has 10 rows and 10 columns', () => {
-        expect(gameBoardArray).toBe(10);
+    test('ship is in the right coordinates', () => {
+        expect(board[newShip.x][newShip.y]).toBe(newShip);
     });
-})
-
+});
