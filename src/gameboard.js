@@ -36,8 +36,8 @@ class gameBoard {
         // have it take up as many spaces as ship's lengths
     }
 
-    receiveAttack() {
-        
+    receiveAttack(x, y) {
+        console.log(board, 'this is board');
     }
 
     /* Gameboards should have a receiveAttack function that 
@@ -59,6 +59,7 @@ class gameBoard {
 //should be able to keep track of all hits
 const gameBoard1 = new gameBoard();
 gameBoard1.placeShips();
+gameBoard1.receiveAttack();
 
 
 export default gameBoard;
