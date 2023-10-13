@@ -21,13 +21,14 @@ class gameBoard {
 
     placeShips() {
         const board = this.createBoard();
-        const newShip = new Ship(4, 0, false);
-        board[0][1] = newShip;
-        for (let i = 0; i < newShip.length; i++) {
+        const newShip = new Ship(4, 0, false, 0, 4);
+        console.log(newShip, 'this is newship');
+        board[newShip.x][newShip.y] = newShip;
+        /* for (let i = 0; i < newShip.length; i++) {
             let x = 0
             let y = 1;
             board[x][y + 1] = newShip;
-        }
+        }*/
          console.log(board, 'this is with a ship')
         // create a ship with Ship Class
         // create a board with gameboard class
