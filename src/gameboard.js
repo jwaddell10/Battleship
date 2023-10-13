@@ -1,9 +1,8 @@
 import Ship from './ship.js'
 
 class gameBoard {
-    constructor (shipLocation) {
+    constructor () {
         this.board = [];
-        this.shipLocation = shipLocation;
     }
 
     createBoard() {
@@ -17,15 +16,18 @@ class gameBoard {
             board[x][y] = '.';
         }
     }
-    console.log(board, 'this is gameboardarray from createboard');
     return board;
     }
 
     placeShips() {
         const board = this.createBoard();
-        const ship1 = new Ship(4, 0, false);
-
-        board[0][1] = ship1;
+        const newShip = new Ship(4, 0, false);
+        board[0][1] = newShip;
+        for (let i = 0; i < newShip.length; i++) {
+            let x = 0
+            let y = 1;
+            board[x][y + 1] = newShip;
+        }
          console.log(board, 'this is with a ship')
         // create a ship with Ship Class
         // create a board with gameboard class
