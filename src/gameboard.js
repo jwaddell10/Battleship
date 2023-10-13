@@ -2,32 +2,53 @@ import Ship from './ship.js'
 
 class gameBoard {
     constructor () {
-        this.gameBoardArray = [];
+        this.board = [];
     }
 
     createBoard() {
+    let board = []
     let rows = 10;
     let columns = 10; 
 
     for (let x = 0; x < rows; x++) {
-        this.gameBoardArray[x] = [];
+        board[x] = [];
         for (let y = 0; y < columns; y++) {
-            this.gameBoardArray[x][y] = y;
+            board[x][y] = '.';
         }
     }
-    console.log(this.gameBoardArray, 'this is gameboardarray');
-    return this.gameBoardArray;
+    return board;
     }
 
     placeShips() {
-        const ship1 = new Ship(4, 0, false);
-        ship1.push(gameBoardArray);
-        console.log(gameBoardArray);
-        console.log(ship1);
+        const board = this.createBoard();
+        const newShip = new Ship(4, 0, false, 0, 4);
+        console.log(newShip, 'this is newship');
+        board[newShip.x][newShip.y] = newShip;
+        /* for (let i = 0; i < newShip.length; i++) {
+            let x = 0
+            let y = 1;
+            board[x][y + 1] = newShip;
+        }*/
+         console.log(board, 'this is with a ship')
+        // create a ship with Ship Class
+        // create a board with gameboard class
+        // using ship's length property, place it on grid index
+        // have it take up as many spaces as ship's lengths
     }
+
+    receiveAttack() {
+        
+    }
+
+    /* Gameboards should have a receiveAttack function that 
+    takes a pair of coordinates, determines whether or not the 
+    attack hit a ship and then sends the ‘hit’ function to the 
+    correct ship, or records the coordinates of the missed shot.*/
 }
 
 //gameboard
+
+//generate random number
 
 //needs to be able to place ships
 
@@ -37,8 +58,7 @@ class gameBoard {
 
 //should be able to keep track of all hits
 const gameBoard1 = new gameBoard();
-gameBoard1.createBoard();
 gameBoard1.placeShips();
-console.log(gameBoard1, 'this is gameboard1');
+
 
 export default gameBoard;
