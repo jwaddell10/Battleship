@@ -30,8 +30,4 @@ class Ship {
     }
 }
 
-const ship1 = new Ship(4, 0, false);
-ship1.shipWasHit();
-ship1.shipWasHit();
-
 export default Ship

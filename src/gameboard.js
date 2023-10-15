@@ -2,11 +2,11 @@ import Ship from './ship.js'
 
 class gameBoard {
     constructor () {
-        this.board = [];
+        this.board = this.createBoard();
     }
 
     createBoard() {
-    let board = []
+    let board = [];
     let rows = 10;
     let columns = 10; 
 
@@ -24,20 +24,24 @@ class gameBoard {
         const newShip = new Ship(4, 0, false, 0, 4);
         console.log(newShip, 'this is newship');
         board[newShip.x][newShip.y] = newShip;
-        /* for (let i = 0; i < newShip.length; i++) {
-            let x = 0
-            let y = 1;
-            board[x][y + 1] = newShip;
-        }*/
-         console.log(board, 'this is with a ship')
-        // create a ship with Ship Class
-        // create a board with gameboard class
-        // using ship's length property, place it on grid index
-        // have it take up as many spaces as ship's lengths
+    
+        console.log(board, 'this is with a ship')
+        return { board, newShip };
     }
 
     receiveAttack(x, y) {
-        console.log(board, 'this is board');
+        const { board, newShip } = this.placeShips();
+
+        if (board[x][y] === board[newShip.x][newShip.y]) {
+            newShip.shipWasHit();
+            console.log(newShip.numberOfHits, 'this should say 1')
+        } else {
+            const missedShotsArray = [];
+            const missedShots = missedShotsArray.push(x, y)
+            console.log(missedShotsArray, 'this is missedshotsarray');
+            console.log(x, y, 'you missed');
+            return missedShots;
+        }
     }
 
     /* Gameboards should have a receiveAttack function that 
@@ -46,20 +50,11 @@ class gameBoard {
     correct ship, or records the coordinates of the missed shot.*/
 }
 
-//gameboard
-
-//generate random number
-
-//needs to be able to place ships
-
-//needs to have x/y coordinates
-
-//needs to be able to hold hit data (receive attack), rceive pair of coordinates and determine if a ship is there
-
-//should be able to keep track of all hits
 const gameBoard1 = new gameBoard();
 gameBoard1.placeShips();
-// gameBoard1.receiveAttack();
+gameBoard1.receiveAttack(0, 4);
+gameBoard1.receiveAttack(1, 9);
+gameBoard1.receiveAttack(2, 4);
 
 
 export default gameBoard;
