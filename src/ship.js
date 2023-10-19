@@ -55,4 +55,7 @@ class Ship {
     }
 }
 
+const ship1 = new Ship(4, 0, false, [4, 0]);
+console.log(ship1, 'this is hsip1');
+
 export default Ship

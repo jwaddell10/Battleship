@@ -19,15 +19,10 @@ class gameBoard {
     return board;
     }
 
-    placeShips() {
-        const board = this.createBoard();
-        const newShip = new Ship(4, 0, false, 0, 4);
-        console.log(newShip, 'this should have my ship on gameboard');
-
-        // place newShip on the board
-        board[newShip.x][newShip.y] = newShip;
-        console.log(board, 'this is board with ships');
-        return { board, newShip };
+    placeShips(ships) {
+       ships.forEach((ship) => {
+        this.board[ship.x][ship.y] = ship;
+       })
     }
 
     /*receiveAttack(x, y) {
@@ -47,10 +42,15 @@ class gameBoard {
 
     }
 }
-
+const shipsArray = []
+const ship1 = new Ship(4, 0, false, 4, 0)
+const ship2 = new Ship(4, 0, false, 3, 1)
+shipsArray.push(ship1, ship2);
+console.log(shipsArray, 'this is the array of ships');
 const missedShotsArray = [];
 const gameBoard1 = new gameBoard();
-gameBoard1.placeShips();
+console.log(gameBoard1, 'this is gameboard1')
+gameBoard1.placeShips(shipsArray);
 
 
 export default gameBoard;
