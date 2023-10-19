@@ -25,18 +25,30 @@ class gameBoard {
        })
     }
 
-    /*receiveAttack(x, y) {
-        const { board, newShip } = this.placeShips();
-        console.log(missedShotsArray, 'this is missarray');
-        if (board[x][y] === board[newShip.x][newShip.y]) {
-            newShip.shipWasHit();
-            newShip.shipWasSunk(newShip);
-        } else {
-            const missedShots = missedShotsArray.push(x, y)
-            console.log(missedShots, 'these shots missed');
-            return missedShots;
+    receiveAttack(ships, x, y) {
+        let isHit = false; 
+    
+        ships.forEach((ship) => {
+            if (this.board[x][y] === this.board[ship.x][ship.y]) {
+                ship.shipWasHit();
+                ship.shipWasSunk(ship);
+                isHit = true; 
+            }
+        });
+    
+        if (!isHit) {
+            // If there was no hit, record the miss
+            missedShotsArray.push(x, y);
         }
-    }*/
+    }
+
+    addMissedShots() {
+        if (receiveAttack === true) {
+            console.log('the ship was hit');
+        } else {
+            return missedShotsArray
+        }
+    }
 
     allShipsSunk() {
 
@@ -45,12 +57,15 @@ class gameBoard {
 const shipsArray = []
 const ship1 = new Ship(4, 0, false, 4, 0)
 const ship2 = new Ship(4, 0, false, 3, 1)
-shipsArray.push(ship1, ship2);
+const ship3 = new Ship(3, 0, false, 5, 9)
+shipsArray.push(ship1, ship2, ship3);
 console.log(shipsArray, 'this is the array of ships');
 const missedShotsArray = [];
 const gameBoard1 = new gameBoard();
 console.log(gameBoard1, 'this is gameboard1')
 gameBoard1.placeShips(shipsArray);
+gameBoard1.receiveAttack(shipsArray, 4, 1);
+console.log(missedShotsArray, 'this is missedshots');
 
 
 export default gameBoard;
