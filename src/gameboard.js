@@ -1,5 +1,4 @@
-import Ship from './ship.js'
-import ShipArrayManager from './shiparraymanager.js';
+import Ship  from './ship.js'
 
 class gameBoard {
     constructor () {
@@ -23,11 +22,15 @@ class gameBoard {
     placeShips() {
         const board = this.createBoard();
         const newShip = new Ship(4, 0, false, 0, 4);
+        console.log(newShip, 'this should have my ship on gameboard');
+
+        // place newShip on the board
         board[newShip.x][newShip.y] = newShip;
+        console.log(board, 'this is board with ships');
         return { board, newShip };
     }
 
-    receiveAttack(x, y) {
+    /*receiveAttack(x, y) {
         const { board, newShip } = this.placeShips();
         console.log(missedShotsArray, 'this is missarray');
         if (board[x][y] === board[newShip.x][newShip.y]) {
@@ -38,18 +41,16 @@ class gameBoard {
             console.log(missedShots, 'these shots missed');
             return missedShots;
         }
-    }
+    }*/
 
     allShipsSunk() {
 
     }
 }
+
 const missedShotsArray = [];
 const gameBoard1 = new gameBoard();
 gameBoard1.placeShips();
-gameBoard1.receiveAttack(1, 4);
-gameBoard1.receiveAttack(1, 9);
-gameBoard1.receiveAttack(2, 4);
 
 
 export default gameBoard;

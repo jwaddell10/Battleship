@@ -1,4 +1,22 @@
-import ShipArrayManager from "./shiparraymanager.js";
+// manages shipArray, can add/remove ships as needed
+
+/* class ShipArrayManager {
+    constructor() {
+        this.ships = [];
+    }
+
+    addShip(ship) {
+        this.ships.push(ship);
+        return this.ships;
+    }
+
+    removeShip(ship) {
+        const index = this.ships.indexOf(ship)
+        if (index !== -1) {
+            this.ships.splice(index, 1);
+        }
+    }
+}*/
 
 class Ship {
     constructor(length, numberOfHits, isSunk, x, y) {
@@ -9,15 +27,15 @@ class Ship {
         this.y = y;
     }
 
-    createShip() {
-        const ship1 = new Ship(3, 0, false);
-        const ship2 = new Ship(2, 0, false);
-        const ship3 = new Ship(4, 0, false);
-        const ship4 = new Ship(1, 0, false);
-        shipArrayManger.addShip({ship1, ship2, ship3, ship4});
-        console.log(shipArrayManger, 'this should have my ships');
-        return shipArrayManger;
-    }
+    /* createShips() {
+        const ship1 = new Ship(3, 0, false, 0, 3);
+        const ship2 = new Ship(2, 0, false, 1, 4);
+        const ship3 = new Ship(4, 0, false, 2, 3);
+        const ship4 = new Ship(1, 0, false, 4, 4);
+        shiparraymanager.addShip({ship1, ship2, ship3, ship4});
+        console.log(shiparraymanager, 'this is shiparraymanager');
+        return { shiparraymanager, ship1, ship2, ship3, ship4 };
+    }*/
 
     shipWasHit() {
         // if ship was hit
@@ -37,7 +55,4 @@ class Ship {
     }
 }
 
-const shipArrayManger = new ShipArrayManager();
-const admiral = new Ship();
-admiral.createShip();
 export default Ship
