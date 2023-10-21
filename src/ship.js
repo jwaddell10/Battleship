@@ -44,14 +44,14 @@ class Ship {
         return this.numberOfHits
     }
 
-    shipWasSunk(Ship) {
+    shipWasSunk() {
         if (this.numberOfHits === this.length) {
             console.log(Ship, 'this ship is sunk');
-            return true;
+            this.isSunk = true;
         } else {
             console.log(Ship, 'this ship is not sunk');
-            return false;
-        }
+            this.isSunk = false;
+        } return this.isSunk;
     }
 }
 

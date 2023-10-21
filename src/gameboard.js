@@ -39,21 +39,25 @@ class gameBoard {
         if (!isHit) {
             // If there was no hit, record the miss
             missedShotsArray.push(x, y);
+            console.log(missedShotsArray, 'this is missed shots')
         }
     }
 
-    addMissedShots() {
-        if (receiveAttack === true) {
-            console.log('the ship was hit');
-        } else {
-            return missedShotsArray
+    allShipsSunk(ships) {
+        let allShipsSunk = false;
+        
+        const shipsSunk = ships.filter((ship) => ship.shipWasSunk() === true)
+
+        if (shipsSunk.length !== ships.length) {
+            allShipsSunk = false; 
+            return allShipsSunk
+        } else if (shipsSunk.length === ships.length) {
+            allShipsSunk = true;
+            return allShipsSunk
         }
-    }
-
-    allShipsSunk() {
-
     }
 }
+
 const shipsArray = []
 const ship1 = new Ship(4, 0, false, 4, 0)
 const ship2 = new Ship(4, 0, false, 3, 1)
@@ -62,10 +66,10 @@ shipsArray.push(ship1, ship2, ship3);
 console.log(shipsArray, 'this is the array of ships');
 const missedShotsArray = [];
 const gameBoard1 = new gameBoard();
-console.log(gameBoard1, 'this is gameboard1')
 gameBoard1.placeShips(shipsArray);
-gameBoard1.receiveAttack(shipsArray, 4, 1);
-console.log(missedShotsArray, 'this is missedshots');
-
+gameBoard1.receiveAttack(shipsArray, 4, 0);
+gameBoard1.receiveAttack(shipsArray, 4, 0);
+gameBoard1.receiveAttack(shipsArray, 4, 0);
+gameBoard1.allShipsSunk(shipsArray);
 
 export default gameBoard;
