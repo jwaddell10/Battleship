@@ -27,8 +27,6 @@ class gameBoard {
     }
 
     receiveAttack(ships, x, y) {
-        console.log('attack received at'[x][y]);
-        const missedShotsArray = [];
         let isHit = false; 
     
         ships.forEach((ship) => {
@@ -60,7 +58,7 @@ class gameBoard {
         }
     }
 }
-
+const missedShotsArray = [];
 const gameboard1 = new gameBoard()
 gameboard1.placeShips(shipsArray);
 
