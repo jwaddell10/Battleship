@@ -17,9 +17,6 @@ class Computer {
             console.log('invalid attack');
             return; // Invalid attack, outside the 10x10 grid
         }
-        if (x === 1 || y === 2) {
-            console.log('this worked')
-        }
     }
     
     generateRandomNumber(min, max) {
