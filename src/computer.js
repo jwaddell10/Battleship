@@ -6,11 +6,11 @@ class Computer {
         this.computer = computer;
     }
 
-    createComputerGameboard() {
+    /*createComputerGameboard() {
         const computerGameboard = new gameBoard(); //create gameboard using gameboard class
         computerGameboard.placeShips(shipsArray); //place ships on computer gameboard
         console.log(computerGameboard, 'this is computerboard');
-    }
+    }*/
 
     computerCheckAttack(x, y) {
         if (x < 0 || x > 10 || y < 0 || y > 10) {
@@ -25,18 +25,14 @@ class Computer {
         return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
       }
 
-      checkRepeatHits(x, y) {
-        const hitsRepeat = shotsArray.includes((coordinates) => shotsArray === coordinates)
-        const coordinates = [x, y];
+    checkRepeatHits(x, y) {
+        const hitsRepeat = shotsArray.includes((x, y) => shotsArray === shotsArray)
         console.log(shotsArray, 'these are are shotsarray')
-        console.log(coordinates, 'these are coordinates');
         console.log(hitsRepeat, 'this is hitsrepeat')
       }
 
     computerSendAttack(x, y) {
-        const coordinates = [x, y]
-        shotsArray.push(coordinates);
-       // console.log(coordinates, 'these are the coordinates');
+        shotsArray.push([x, y]);
         this.computerCheckAttack();
         this.checkRepeatHits(x, y)
         //console.log(gameboard1, 'this is gameboard1computer')
