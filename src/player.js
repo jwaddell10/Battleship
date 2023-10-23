@@ -20,9 +20,6 @@ class Player {
     }
 
     sendAttack(x, y) {
-        //attack must be on the board--check if legal
-        //check to see if it's been done already
-        //
         this.checkAttack(x, y);
         let attack = gameboard1.board[x][y];
     }

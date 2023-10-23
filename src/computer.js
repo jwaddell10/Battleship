@@ -26,7 +26,8 @@ class Computer {
       }
 
     checkRepeatHits(x, y) {
-        const hitsRepeat = shotsArray.includes((x, y) => shotsArray === shotsArray)
+        const hitsRepeat = shotsArray.includes((coordinates) => shotsArray === coordinates)
+        const coordinates = [x, y]
         console.log(shotsArray, 'these are are shotsarray')
         console.log(hitsRepeat, 'this is hitsrepeat')
       }
@@ -44,4 +45,3 @@ const shotsArray = []
 const computer1 = new Computer();
 computer1.computerSendAttack(1, 2); 
 computer1.computerSendAttack(1, 2); 
-computer1.computerSendAttack(computer1.generateRandomNumber(0, 9), computer1.generateRandomNumber(0, 9));
