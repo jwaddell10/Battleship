@@ -1,4 +1,5 @@
-import Ship  from './ship.js'
+import { shipsArray, Ship }  from './ship.js'
+import { player1, Player } from './player.js'
 
 class gameBoard {
     constructor () {
@@ -26,6 +27,8 @@ class gameBoard {
     }
 
     receiveAttack(ships, x, y) {
+        console.log('attack received at'[x][y]);
+        const missedShotsArray = [];
         let isHit = false; 
     
         ships.forEach((ship) => {
@@ -58,18 +61,7 @@ class gameBoard {
     }
 }
 
-const shipsArray = []
-const ship1 = new Ship(4, 0, false, 4, 0)
-const ship2 = new Ship(4, 0, false, 3, 1)
-const ship3 = new Ship(3, 0, false, 5, 9)
-shipsArray.push(ship1, ship2, ship3);
-console.log(shipsArray, 'this is the array of ships');
-const missedShotsArray = [];
-const gameBoard1 = new gameBoard();
-gameBoard1.placeShips(shipsArray);
-gameBoard1.receiveAttack(shipsArray, 4, 0);
-gameBoard1.receiveAttack(shipsArray, 4, 0);
-gameBoard1.receiveAttack(shipsArray, 4, 0);
-gameBoard1.allShipsSunk(shipsArray);
+const gameboard1 = new gameBoard()
+gameboard1.placeShips(shipsArray);
 
-export default gameBoard;
+export { gameboard1, gameBoard }
