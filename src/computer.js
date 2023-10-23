@@ -36,9 +36,7 @@ class Computer {
         shotsArray.push([x, y]);
         this.computerCheckAttack();
         this.checkRepeatHits(x, y)
-        //console.log(gameboard1, 'this is gameboard1computer')
         let computerAttack = gameboard1.board[x][y];
-        //console.log(computerAttack, 'this spot was attacked computer');
     }
 }
 const shotsArray = []
