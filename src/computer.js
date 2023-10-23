@@ -14,7 +14,6 @@ class Computer {
 
     computerCheckAttack(x, y) {
         if (x < 0 || x > 10 || y < 0 || y > 10) {
-            console.log('invalid attack');
             return; // Invalid attack, outside the 10x10 grid
         }
     }
@@ -41,5 +40,4 @@ class Computer {
 }
 const shotsArray = []
 const computer1 = new Computer();
-computer1.computerSendAttack(1, 2); 
 computer1.computerSendAttack(1, 2); 
