@@ -24,17 +24,18 @@ class Computer {
         return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
       }
 
-    checkRepeatHits(x, y) {
-        const hitsRepeat = shotsArray.includes((coordinates) => shotsArray === coordinates)
-        const coordinates = [x, y]
-        console.log(shotsArray, 'these are are shotsarray')
-        console.log(hitsRepeat, 'this is hitsrepeat')
+    checkRepeatHits(x, y, shotsArray) {
+        const coordinates = [x, y];
+        const hitsRepeat = shotsArray.some((coords) => coords[0] === x && coords[1] === y);
+        console.log(coordinates, 'these are the coordinates');
+        console.log(shotsArray, 'these are the shots array');
+        console.log(hitsRepeat, 'this is hits repeat');
       }
 
     computerSendAttack(x, y) {
         shotsArray.push([x, y]);
-        this.computerCheckAttack();
-        this.checkRepeatHits(x, y)
+        this.computerCheckAttack(x, y); // Provide x and y as arguments
+        this.checkRepeatHits(x, y, shotsArray); // Pass shotsArray as an argument
         let computerAttack = gameboard1.board[x][y];
     }
 }
