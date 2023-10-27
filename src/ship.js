@@ -31,4 +31,4 @@ const ship2 = new Ship(4, 0, false, 3, 1)
 const ship3 = new Ship(3, 0, false, 5, 9)
 shipsArray.push(ship1, ship2, ship3);
 
-export { shipsArray, Ship };
+export { shipsArray, Ship }
