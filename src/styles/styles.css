@@ -1,4 +1,14 @@
-.square {
+.row {
+    height: 10px;
+    width: 7.5rem;
+    display: flex; /* Apply grid display to rows */
+    grid-template-columns: repeat(11, 1fr);
+    border: 1px solid black;
+}
+
+.cell {
     height: 10px;
     width: 10px;
+    display: inline-block; /* Use inline-block for cells */
+    border: 1px solid black;
 }

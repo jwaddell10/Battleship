@@ -4,3 +4,6 @@ import Computer from './computer.js'
 import gameBoard from './gameboard.js';
 import { renderBoard } from './dom.js';
 import './styles/styles.css'
+import render from 'dom-serializer';
+
+renderBoard();
