@@ -1,16 +1,16 @@
 import { shipsArray, Ship } from "./ship.js";
-import { gameboard1, gameBoard } from './gameboard.js';
+import { gameBoard } from './gameboard.js';
 
 class Player {
-    //attack method
-    //
-    constructor(player) {
-        this.player = player;
+
+    constructor() {
+        this.board = this.createPlayerGameboard()
     }
 
     createPlayerGameboard() {
         const playerGameboard = new gameBoard();
         playerGameboard.placeShips(shipsArray);
+        return playerGameboard
     }
 
     checkAttack(x, y) {
@@ -21,11 +21,12 @@ class Player {
 
     sendAttack(x, y) {
         this.checkAttack(x, y);
-        let attack = gameboard1.board[x][y];
+        let attack = this.board.board[x][y];
     }
 }
 const player1 = new Player();
-player1.createPlayerGameboard();
+console.log(player1.board, 'this is playerboard');
+console.log(player1, 'this is player1')
 player1.sendAttack(1, 0);
 
-export { player1, Player };
+export { Player };

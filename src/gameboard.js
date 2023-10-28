@@ -23,7 +23,6 @@ class gameBoard {
     placeShips(ships) {
        ships.forEach((ship) => {
         this.board[ship.x][ship.y] = ship;
-        console.log(ship, 'this is ship');
        })
     }
 
@@ -60,7 +59,5 @@ class gameBoard {
     }
 }
 const missedShotsArray = [];
-const gameboard1 = new gameBoard()
-gameboard1.placeShips(shipsArray);
 
-export { gameboard1, gameBoard }
+export { gameBoard }

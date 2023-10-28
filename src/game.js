@@ -3,7 +3,7 @@ and Gameboards. For now just
  populate each Gameboard with predetermined coordinates.
  You can implement a system for allowing players to place their ships later.*/
 
-import { renderBoard, renderComputerBoard } from "./dom.js";
+import { renderBoard, renderComputerBoard, renderPlayerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import { shipsArray } from "./ship.js";
 
@@ -17,9 +17,7 @@ function game() {
         player1gameboard: new gameBoard(),
         computergameboard: new gameBoard()
     };
-
-    gameBoards.player1gameboard.placeShips(shipsArray);
-    console.log(gameBoards, 'this is gameboards')
+    renderPlayerShips();
 }
 
 
