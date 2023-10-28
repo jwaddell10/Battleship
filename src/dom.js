@@ -21,7 +21,25 @@ function renderBoard() {
     }
 }
 
+function renderComputerBoard() {
+    const boardContainer = document.querySelector('.computerboardcontainer');
+    
+    for (let i = 0; i < 10; i++) {
+        const row = document.createElement('div');
+        row.classList.add('computerrow');
+        row.id = `computerrow-${i}`;
+        boardContainer.appendChild(row);
+    
+        for (let j = 0; j < 10; j++) {
+            const cell = document.createElement('div');
+            cell.classList.add('computercell');
+            cell.id = `computercell-${i}-${j}`;
+            row.appendChild(cell);
+        }
+    }
+}
 
 export {
     renderBoard, 
+    renderComputerBoard,
 }

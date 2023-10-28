@@ -1,14 +1,79 @@
+body {
+    background: #0b043c;
+}
+
+.title {
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.playerboardname {
+    display: flex;
+    color: white;
+    justify-content: center;
+}
+
+.gridcontainer {
+    display: grid;
+    justify-content: center;
+}
+
+.flexcontainer {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+}
+
+.boardcontainer {
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(-45deg, #00d9ff, #fff);
+    box-sizing: content-box;
+}
+
+.computerboardname {
+    display: flex;
+    color: white;
+    justify-content: center;
+}
+
+.computergridcontainer {
+    display: grid;
+    justify-content: center;
+}
+
+.computerboardcontainer {
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(-45deg, #00d9ff, #fff);
+    box-sizing: content-box;
+}
+
 .row {
-    height: 10px;
-    width: 7.5rem;
     display: flex; /* Apply grid display to rows */
     grid-template-columns: repeat(11, 1fr);
     border: 1px solid black;
 }
 
 .cell {
-    height: 10px;
-    width: 10px;
+    background-color: #0b043c;
+    height: 2vw;
+    width: 2vw;
     display: inline-block; /* Use inline-block for cells */
+    border: 1px solid gray;
+}
+
+.computerrow {
+    display: flex; /* Apply grid display to rows */
+    grid-template-columns: repeat(11, 1fr);
     border: 1px solid black;
+}
+
+.computercell {
+    background-color: #0b043c;
+    height: 2vw;
+    width: 2vw;
+    display: inline-block; /* Use inline-block for cells */
+    border: 1px solid gray;
 }
