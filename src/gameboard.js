@@ -23,6 +23,7 @@ class gameBoard {
     placeShips(ships) {
        ships.forEach((ship) => {
         this.board[ship.x][ship.y] = ship;
+        console.log(ship, 'this is ship');
        })
     }
 
