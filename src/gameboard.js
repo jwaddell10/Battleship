@@ -22,8 +22,19 @@ class gameBoard {
 
     placeShips(ships) {
        ships.forEach((ship) => {
-        this.board[ship.x][ship.y] = ship;
-       })
+        const { x, y, orientation } = ship;
+        
+            if (orientation === 'horizontal') {
+                for (let i = 0; i < ship.length; i++) {
+                    this.board[ship.x][ship.y + i] = ship;
+                }
+        
+            } else if (orientation === 'vertical') {
+                for (let i = 0; i < ship.length; i++) {
+                    this.board[ship.x + i][ship.y] = ship;
+                }
+            }
+        })
     }
 
     receiveAttack(ships, x, y) {

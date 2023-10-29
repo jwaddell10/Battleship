@@ -57,7 +57,6 @@ body {
 }
 
 .cell {
-    background-color: #0b043c;
     height: 2vw;
     width: 2vw;
     display: inline-block; /* Use inline-block for cells */
@@ -79,9 +78,8 @@ body {
 }
 
 .ship {
-    background-color: red; /* Set the background color of the ship */
-    width: 100%; /* Set the width of the ship */
-    height: 100%; /* Set the height of the ship */
-    /* Add some margin to separate ships */
-    /* Add other styles like border-radius, box-shadow, or background images as desired */
+    width: 2vw; /* Make the ship as wide as the cell */
+    height: 2vw; /* Make the ship as tall as the cell */
+    background-color: red; /* Example background color for ships */
+    display: inline-block;
 }

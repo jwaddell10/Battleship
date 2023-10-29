@@ -1,10 +1,11 @@
 class Ship {
-    constructor(length, numberOfHits, isSunk, x, y) {
+    constructor(length, numberOfHits, isSunk, x, y, orientation) {
         this.length = length;
         this.numberOfHits = numberOfHits;
         this.isSunk = isSunk;
         this.x = x;
         this.y = y;
+        this.orientation = orientation
     }
 
     shipWasHit() {
@@ -26,9 +27,9 @@ class Ship {
 }
 
 const shipsArray = []
-const ship1 = new Ship(4, 0, false, 4, 0)
-const ship2 = new Ship(4, 0, false, 3, 1)
-const ship3 = new Ship(3, 0, false, 5, 9)
+const ship1 = new Ship(6, 0, false, 4, 0, 'horizontal')
+const ship2 = new Ship(4, 0, false, 3, 1, 'vertical')
+const ship3 = new Ship(3, 0, false, 5, 9, 'horizontal');
 shipsArray.push(ship1, ship2, ship3);
 
 export { shipsArray, Ship }

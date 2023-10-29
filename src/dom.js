@@ -44,22 +44,32 @@ function renderPlayerShips() {
     shipsArray.forEach((ship) => {
         const x = ship.x;
         const y = ship.y;
+        const length = ship.length;
+        const orientation = ship.orientation;
 
-        const shipElement = document.createElement('div');
-        shipElement.classList.add('ship');
-        shipElement.id = `ship${x}-${y}`;
-        console.log(shipElement, 'this is shipele');
+        for (let i = 0; i < length; i++) {
+            const shipElement = document.createElement('div');
+            shipElement.classList.add('ship');
+            shipElement.id = `ship-${x}-${y}-${i}`;
+            console.log(shipElement)
+            // Calculate the position based on orientation
+            if (orientation === 'horizontal') {
+                shipElement.style.gridColumn = `${y + i + 1} / span 1`;
+                shipElement.style.gridRow = `${x + 1}`;
+            } else if (orientation === 'vertical') {
+                shipElement.style.gridColumn = `${y + 1}`;
+                shipElement.style.gridRow = `${x + i + 1} / span 1`;
+            }
 
-        //put shipelement in proper cell
-        const cell = document.getElementById(`cell-${x}-${y}`);
-        console.log(cell, 'this is cell');
-
-        if (cell) {
-            cell.appendChild(shipElement);
-        } else {
-            console.log(`Cell-${x}-${y} doesn't exist or is already filled`);
+            // Put shipElement in the proper cell
+            const cell = document.getElementById(`cell-${x}-${y}`);
+            if (cell) {
+                cell.appendChild(shipElement);
+            } else {
+                console.log(`Cell-${x}-${y} doesn't exist or is already filled`);
+            }
         }
-    })
+    });
 }
 
 export {
