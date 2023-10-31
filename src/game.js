@@ -6,6 +6,8 @@ and Gameboards. For now just
 import { renderBoard, renderComputerBoard, renderPlayerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import { shipsArray } from "./ship.js";
+import { Computer, computer1 } from './computer.js'
+
 
 
 function game() {
@@ -18,6 +20,7 @@ function game() {
         computergameboard: new gameBoard()
     };
     renderPlayerShips();
+    computer1.createComputerGameboard();
 }
 
 
