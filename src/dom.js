@@ -51,22 +51,23 @@ function renderPlayerShips() {
             const shipElement = document.createElement('div');
             shipElement.classList.add('ship');
             shipElement.id = `ship-${x}-${y}-${i}`;
-            console.log(shipElement)
+
             // Calculate the position based on orientation
             if (orientation === 'horizontal') {
-                shipElement.style.gridColumn = `${y + i + 1} / span 1`;
-                shipElement.style.gridRow = `${x + 1}`;
+              //place ships in cells
+                const cell = document.getElementById(`cell-${x}-${y + i + 1}`);
+                    if (cell) {
+                        cell.appendChild(shipElement);
+                    } else {
+                    console.log(`Cell-${x}-${y} doesn't exist or is already filled`);
+                    }
             } else if (orientation === 'vertical') {
-                shipElement.style.gridColumn = `${y + 1}`;
-                shipElement.style.gridRow = `${x + i + 1} / span 1`;
-            }
-
-            // Put shipElement in the proper cell
-            const cell = document.getElementById(`cell-${x}-${y}`);
-            if (cell) {
-                cell.appendChild(shipElement);
-            } else {
-                console.log(`Cell-${x}-${y} doesn't exist or is already filled`);
+                const cell = document.getElementById(`cell-${x + i + 1}-${y}`);
+                    if (cell) {
+                        cell.appendChild(shipElement);
+                    } else if (cell === false) {
+                        return;
+                    }
             }
         }
     });

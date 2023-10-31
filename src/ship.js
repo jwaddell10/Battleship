@@ -27,9 +27,9 @@ class Ship {
 }
 
 const shipsArray = []
-const ship1 = new Ship(6, 0, false, 4, 0, 'horizontal')
-const ship2 = new Ship(4, 0, false, 3, 1, 'vertical')
-const ship3 = new Ship(3, 0, false, 5, 9, 'horizontal');
+const ship1 = new Ship(6, 0, false, 1, 3, 'horizontal')
+const ship2 = new Ship(4, 0, false, 5, 8, 'vertical')
+const ship3 = new Ship(3, 0, false, 3, 4, 'horizontal');
 shipsArray.push(ship1, ship2, ship3);
 
 export { shipsArray, Ship }
