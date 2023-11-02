@@ -1,6 +1,5 @@
 import { shipsArray, Ship } from "./ship.js";
 import { gameBoard } from './gameboard.js';
-import { clearLine } from "jest-util";
 
 class Player {
 
