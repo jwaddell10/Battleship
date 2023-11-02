@@ -1,5 +1,6 @@
 import { shipsArray, Ship } from "./ship.js";
 import { gameBoard } from './gameboard.js';
+import { clearLine } from "jest-util";
 
 class Player {
 
@@ -20,6 +21,10 @@ class Player {
     }
 
     sendAttack(x, y) {
+        const cell = document.getElementById(`cell-${x}-${y}`)
+        cell.addEventListener('click', () => {
+            console.log(`cell-${x}-${y}`, 'this is cellxy')
+        })
         this.checkAttack(x, y);
         let attack = this.board.board[x][y];
     }
@@ -27,6 +32,5 @@ class Player {
 const player1 = new Player();
 console.log(player1.board, 'this is playerboard');
 console.log(player1, 'this is player1')
-player1.sendAttack(1, 0);
 
-export { Player };
+export { Player, player1 };

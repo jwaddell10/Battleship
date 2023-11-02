@@ -11,9 +11,13 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: 'index_bundle.js',
   },
-  plugins: [new HtmlWebpackPlugin({
-    template: 'src/index.html'
-  })
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
   ],
   module: {
     rules: [
@@ -44,13 +48,13 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    modules: [
-      'node_modules',
-      'bower_components',
-      'shared',
-      '/shared/vendor/modules',
-    ],
+resolve: {
+  fallback: {
+    // Remove any lines disabling core Node.js modules.
   },
+  alias: {
+    process: "process/browser"
+  },
+  extensions: ['.js', '.jsx'],
+},
 };

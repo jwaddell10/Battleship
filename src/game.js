@@ -7,6 +7,7 @@ import { renderBoard, renderComputerBoard, renderPlayerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import { shipsArray } from "./ship.js";
 import { Computer, computer1 } from './computer.js'
+import { Player, player1 } from './player.js'
 
 
 
@@ -21,6 +22,14 @@ function game() {
     };
     renderPlayerShips();
     computer1.createComputerGameboard();
+
+    player1.sendAttack();
+
+    //place ships
+    //player clicks on attack location, unique id is stored
+    //check for if attack coordinates matches ship coordinates
+    //if so, record attack, change tile color, prevent another attack from happening
+    //if not, record miss and prevent another attack from happening
 }
 
 
