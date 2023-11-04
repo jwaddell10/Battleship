@@ -8,6 +8,14 @@ class Ship {
         this.orientation = orientation
     }
 
+    /*static createShip(length) {
+        let ship = new Ship(length)
+        console.log(ship, 'this is ship, should have properties')
+        console.log(ship.properties, 'whats this?')
+        shipsArray.push(ship);
+        console.log(shipsArray, 'this is shipsarray')
+    }*/
+
     shipWasHit() {
         // if ship was hit
         this.numberOfHits++
@@ -27,10 +35,6 @@ class Ship {
 }
 
 const shipsArray = []
-const ship1 = new Ship(6, 0, false, 1, 3, 'horizontal')
-const ship2 = new Ship(4, 0, false, 5, 8, 'vertical')
-const ship3 = new Ship(3, 0, false, 3, 4, 'horizontal');
-shipsArray.push(ship1, ship2, ship3);
 
 export default Ship
 export { shipsArray }

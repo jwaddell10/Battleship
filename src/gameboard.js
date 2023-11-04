@@ -4,6 +4,7 @@ import { player1, Player } from './player.js'
 class gameBoard {
     constructor () {
         this.board = this.createBoard();
+        this.missedAttacks = []
     }
 
     createBoard() {
@@ -50,8 +51,8 @@ class gameBoard {
     
         if (!isHit) {
             // If there was no hit, record the miss
-            missedShotsArray.push(x, y);
-            console.log(missedShotsArray, 'this is missed shots')
+            this.missedAttacks.push(x, y);
+            console.log(this.missedAttacks, 'this is missed shots')
         }
     }
 
@@ -69,6 +70,5 @@ class gameBoard {
         }
     }
 }
-const missedShotsArray = [];
 
 export { gameBoard }

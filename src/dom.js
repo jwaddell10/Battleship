@@ -41,6 +41,7 @@ function renderComputerBoard() {
 }
 
 function renderPlayerShips() {
+    console.log(shipsArray, 'this is shipsarray render')
     shipsArray.forEach((ship) => {
         const x = ship.x;
         const y = ship.y;
@@ -56,6 +57,7 @@ function renderPlayerShips() {
             if (orientation === 'horizontal') {
               //place ships in cells
                 const cell = document.getElementById(`cell-${x}-${y + i + 1}`);
+                console.log(cell, 'this is cell ships')
                     if (cell) {
                         cell.appendChild(shipElement);
                     } else {

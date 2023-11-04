@@ -5,25 +5,34 @@ and Gameboards. For now just
 
 import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
-import { shipsArray } from "./ship.js";
+import Ship, { shipsArray } from "./ship.js";
 import { Computer, computer1 } from './computer.js'
 import { Player, player1 } from './player.js'
 
 
 
 function game() {
-    
-    renderBoard();
-    renderComputerBoard();
-    
+
     const gameBoards = {
         player1gameboard: new gameBoard(),
         computergameboard: new gameBoard()
     };
-    renderPlayerShips();
-    renderComputerShips();
+    //eventually use crate ship function here
+    const ship1 = new Ship(6, 0, false, 1, 3, 'horizontal')
+    const ship2 = new Ship(4, 0, false, 5, 8, 'vertical')
+    const ship3 = new Ship(3, 0, false, 3, 4, 'horizontal');
+    shipsArray.push(ship1, ship2, ship3);
 
     
+    
+    renderBoard();
+    renderComputerBoard();
+   
+    
+   
+    renderPlayerShips();
+    renderComputerShips();
+    console.log(gameBoards.player1gameboard, 'this is gameboards')
     
     
     //place ships

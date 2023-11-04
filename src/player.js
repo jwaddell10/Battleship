@@ -3,15 +3,16 @@ import { gameBoard } from './gameboard.js';
 
 class Player {
 
-    constructor() {
-        this.board = this.createPlayerGameboard()
+    constructor(name) {
+        this.name = name;
+        this.turn = true;
     }
 
-    createPlayerGameboard() {
+    /*createPlayerGameboard() {
         const playerGameboard = new gameBoard();
         playerGameboard.placeShips(shipsArray);
         return playerGameboard
-    }
+    }*/
 
     checkAttack(x, y) {
         if (x < 0 || x > 10 || y < 0 || y > 10) {
@@ -19,17 +20,17 @@ class Player {
         }
     }
 
-    sendAttack(x, y) {
-        /*const cell = document.querySelectorAll(`#computercell-${x}-${y}`);
-        console.log(cell, 'this is cell')
+    sendAttack() {
+        const cell = document.querySelectorAll(`.computercell`);
+        
         cell.forEach((item) => {
             item.addEventListener('click', (e) => {
-                const computerHit = e.target.attributes.id
-                console.log(computerHit)
+                const attack = e.target.attributes.id
+                const cellId = (`computercell`)
+                console.log(attack, 'send attack worked')
+                return attack;
             })
-        })*/
-        this.checkAttack(x, y);
-        let attack = this.board.board[x][y];
+        })
     }
 }
 const player1 = new Player();
