@@ -21,19 +21,15 @@ function game() {
     };
     renderPlayerShips();
     computer1.createComputerGameboard();
+
+    player1.click();
+    
     //place ships
     //player clicks on attack location, unique id is stored
     //check for if attack coordinates matches ship coordinates
     //if so, record attack, change tile color, prevent another attack from happening
     //if not, record miss and prevent another attack from happening
 }
-
-function click() {
-    const cell = document.querySelectorAll('#cell');
-    console.log(cell, 'this is cell')
-}
-click();
-
 game();
 
 export { 

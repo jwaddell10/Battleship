@@ -23,6 +23,15 @@ class Player {
         this.checkAttack(x, y);
         let attack = this.board.board[x][y];
     }
+    
+    click() {
+        const cell = document.querySelectorAll(`.computercell`);
+        cell.forEach((item) => {
+            item.addEventListener('click', (e) => {
+                console.log(e.target, 'this is etarget')
+            })
+        })
+    }
 }
 const player1 = new Player();
 console.log(player1.board, 'this is playerboard');
