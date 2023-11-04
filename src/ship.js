@@ -32,4 +32,5 @@ const ship2 = new Ship(4, 0, false, 5, 8, 'vertical')
 const ship3 = new Ship(3, 0, false, 3, 4, 'horizontal');
 shipsArray.push(ship1, ship2, ship3);
 
-export { shipsArray, Ship }
+export default Ship
+export { shipsArray }

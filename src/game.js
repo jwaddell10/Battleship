@@ -12,7 +12,6 @@ import { Player, player1 } from './player.js'
 
 
 function game() {
-    console.log('is this working');
     renderBoard();
     renderComputerBoard();
     
@@ -22,9 +21,6 @@ function game() {
     };
     renderPlayerShips();
     computer1.createComputerGameboard();
-
-    player1.sendAttack();
-
     //place ships
     //player clicks on attack location, unique id is stored
     //check for if attack coordinates matches ship coordinates
@@ -32,6 +28,11 @@ function game() {
     //if not, record miss and prevent another attack from happening
 }
 
+function click() {
+    const cell = document.querySelectorAll('#cell');
+    console.log(cell, 'this is cell')
+}
+click();
 
 game();
 
