@@ -83,3 +83,10 @@ body {
     background-color: red; /* Example background color for ships */
     display: inline-block;
 }
+
+.computership {
+    width: 2vw; /* Make the ship as wide as the cell */
+    height: 2vw; /* Make the ship as tall as the cell */
+    background-color: red; /* Example background color for ships */
+    display: inline-block;
+}

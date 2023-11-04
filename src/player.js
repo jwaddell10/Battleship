@@ -20,21 +20,18 @@ class Player {
     }
 
     sendAttack(x, y) {
+        /*const cell = document.querySelectorAll(`#computercell-${x}-${y}`);
+        console.log(cell, 'this is cell')
+        cell.forEach((item) => {
+            item.addEventListener('click', (e) => {
+                const computerHit = e.target.attributes.id
+                console.log(computerHit)
+            })
+        })*/
         this.checkAttack(x, y);
         let attack = this.board.board[x][y];
     }
-    
-    click() {
-        const cell = document.querySelectorAll(`.computercell`);
-        cell.forEach((item) => {
-            item.addEventListener('click', (e) => {
-                console.log(e.target, 'this is etarget')
-            })
-        })
-    }
 }
 const player1 = new Player();
-console.log(player1.board, 'this is playerboard');
-console.log(player1, 'this is player1')
 
 export { Player, player1 };

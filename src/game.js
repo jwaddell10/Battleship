@@ -3,7 +3,7 @@ and Gameboards. For now just
  populate each Gameboard with predetermined coordinates.
  You can implement a system for allowing players to place their ships later.*/
 
-import { renderBoard, renderComputerBoard, renderPlayerShips } from "./dom.js";
+import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import { shipsArray } from "./ship.js";
 import { Computer, computer1 } from './computer.js'
@@ -12,6 +12,7 @@ import { Player, player1 } from './player.js'
 
 
 function game() {
+    
     renderBoard();
     renderComputerBoard();
     
@@ -20,9 +21,10 @@ function game() {
         computergameboard: new gameBoard()
     };
     renderPlayerShips();
-    computer1.createComputerGameboard();
+    renderComputerShips();
 
-    player1.click();
+    
+    
     
     //place ships
     //player clicks on attack location, unique id is stored

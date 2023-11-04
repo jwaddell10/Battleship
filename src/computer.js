@@ -9,7 +9,7 @@ class Computer {
     createComputerGameboard() {
         const computerGameboard = new gameBoard(); //create gameboard using gameboard class
         computerGameboard.placeShips(shipsArray); //place ships on computer gameboard
-        console.log(shipsArray, 'these are the ships')
+        console.log(shipsArray, 'these are the shipscomputer')
         return computerGameboard;
     }
 
@@ -28,6 +28,10 @@ class Computer {
     checkRepeatHits(x, y, shotsArray) {
         const coordinates = [x, y];
         const hitsRepeat = shotsArray.some((coords) => coords[0] === x && coords[1] === y);
+
+        if (hitsRepeat === true) {
+            console.log('you hit this already');
+        } else return coordinates
       }
 
     computerSendAttack(x, y) {

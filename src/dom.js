@@ -73,8 +73,42 @@ function renderPlayerShips() {
     });
 }
 
+function renderComputerShips() {
+    shipsArray.forEach((ship) => {
+        const x = ship.x;
+        const y = ship.y;
+        const length = ship.length;
+        const orientation = ship.orientation;
+
+        for (let i = 0; i < length; i++) {
+            const shipElement = document.createElement('div');
+            shipElement.classList.add('ship');
+            shipElement.id = `ship-${x}-${y}-${i}`;
+
+            // Calculate the position based on orientation
+            if (orientation === 'horizontal') {
+              //place ships in cells
+                const cell = document.getElementById(`computercell-${x}-${y + i + 1}`);
+                    if (cell) {
+                        cell.appendChild(shipElement);
+                    } else {
+                    console.log(`ComputerCell-${x}-${y} doesn't exist or is already filled`);
+                    }
+            } else if (orientation === 'vertical') {
+                const cell = document.getElementById(`computercell-${x + i + 1}-${y}`);
+                    if (cell) {
+                        cell.appendChild(shipElement);
+                    } else if (cell === false) {
+                        return;
+                    }
+            }
+        }
+    });
+}
+
 export {
     renderBoard, 
     renderComputerBoard,
     renderPlayerShips,
+    renderComputerShips,
 }
