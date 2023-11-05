@@ -34,8 +34,8 @@ class Ship {
     }
 }
 
-const shipsArray = []
+const playerShipsArray = []
 const computerShipsArray = []
 
 export default Ship
-export { shipsArray, computerShipsArray }
+export { playerShipsArray, computerShipsArray }

@@ -5,7 +5,7 @@ and Gameboards. For now just
 
 import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
-import Ship, { computerShipsArray, shipsArray } from "./ship.js";
+import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from './computer.js'
 import { Player } from './player.js'
 
@@ -35,7 +35,7 @@ function game() {
     ];
 
     //place ships on the board
-    shipsArray.push(...playerShips);
+    playerShipsArray.push(...playerShips);
     computerShipsArray.push(...computerShips);
 
     //create the gameboards for the players and place ships on the board
