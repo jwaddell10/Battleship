@@ -7,23 +7,16 @@ class Computer {
         this.turn = false;
     }
 
-    /*createComputerGameboard() {
-        const computerGameboard = new gameBoard(); //create gameboard using gameboard class
-        computerGameboard.placeShips(shipsArray); //place ships on computer gameboard
-        console.log(shipsArray, 'these are the shipscomputer')
-        return computerGameboard;
-    }*/
-
     computerCheckAttack(x, y) {
         if (x < 0 || x > 10 || y < 0 || y > 10) {
-            return; // Invalid attack, outside the 10x10 grid
+            return;
         }
     }
     
     generateRandomNumber() {
         const x = Math.floor(Math.random() * 10);
         const y = Math.floor(Math.random() * 10);
-        return { x, y }// The maximum is inclusive and the minimum is inclusive
+        return { x, y }
       }
 
     checkRepeatHits(x, y, shotsArray) {
@@ -37,8 +30,8 @@ class Computer {
 
     computerSendAttack(x, y) {
         shotsArray.push([x, y]);
-        this.computerCheckAttack(x, y); // Provide x and y as arguments
-        this.checkRepeatHits(x, y, shotsArray); // Pass shotsArray as an argument
+        this.computerCheckAttack(x, y);
+        this.checkRepeatHits(x, y, shotsArray);
         let computerAttack = this.board.board[x][y];
     }
 }

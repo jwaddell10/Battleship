@@ -5,12 +5,6 @@ class Player {
         this.turn = true;
     }
 
-    /*createPlayerGameboard() {
-        const playerGameboard = new gameBoard();
-        playerGameboard.placeShips(shipsArray);
-        return playerGameboard
-    }*/
-
     checkAttack(x, y) {
         if (x < 0 || x > 10 || y < 0 || y > 10) {
             return; // Invalid attack, outside the 10x10 grid

@@ -8,14 +8,6 @@ class Ship {
         this.orientation = orientation
     }
 
-    /*static createShip(length) {
-        let ship = new Ship(length)
-        console.log(ship, 'this is ship, should have properties')
-        console.log(ship.properties, 'whats this?')
-        shipsArray.push(ship);
-        console.log(shipsArray, 'this is shipsarray')
-    }*/
-
     shipWasHit() {
         // if ship was hit
         this.numberOfHits++
