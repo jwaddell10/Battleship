@@ -22,7 +22,7 @@ class Player {
                 const strSplit = attack.split('-');
                 const x = strSplit[1];
                 const y = strSplit[2];
-                return { x }
+                return { x, y }
             })
         })
     }
