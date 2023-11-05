@@ -36,6 +36,7 @@ class gameBoard {
     }
 
     receiveAttack(ships, x, y) {
+        console.log(value, 'this is value')
         let isHit = false; 
     
         ships.forEach((ship) => {

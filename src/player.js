@@ -17,7 +17,6 @@ class Player {
         cell.forEach((item) => {
             item.addEventListener('click', (e) => {
                 const attack = e.target.attributes.id
-                const cellId = (`computercell`)
                 console.log(attack, 'send attack worked')
                 return attack;
             })

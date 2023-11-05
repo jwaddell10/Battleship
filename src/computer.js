@@ -1,6 +1,3 @@
-import { shipsArray } from "./ship.js";
-import { gameBoard } from './gameboard.js';
-
 class Computer {
     
     constructor() {
