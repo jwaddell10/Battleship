@@ -2,16 +2,17 @@ import { shipsArray } from "./ship.js";
 import { gameBoard } from './gameboard.js';
 
 class Computer {
+    
     constructor() {
-        this.board = this.createComputerGameboard();
+        this.turn = false;
     }
 
-    createComputerGameboard() {
+    /*createComputerGameboard() {
         const computerGameboard = new gameBoard(); //create gameboard using gameboard class
         computerGameboard.placeShips(shipsArray); //place ships on computer gameboard
         console.log(shipsArray, 'these are the shipscomputer')
         return computerGameboard;
-    }
+    }*/
 
     computerCheckAttack(x, y) {
         if (x < 0 || x > 10 || y < 0 || y > 10) {
@@ -19,10 +20,10 @@ class Computer {
         }
     }
     
-    generateRandomNumber(x, y) {
-        x = Math.ceil(x);
-        y = Math.floor(y);
-        return Math.floor(Math.random() * (y - x + 1) + x); // The maximum is inclusive and the minimum is inclusive
+    generateRandomNumber() {
+        const x = Math.floor(Math.random() * 10);
+        const y = Math.floor(Math.random() * 10);
+        return { x, y }// The maximum is inclusive and the minimum is inclusive
       }
 
     checkRepeatHits(x, y, shotsArray) {
@@ -42,9 +43,5 @@ class Computer {
     }
 }
 const shotsArray = []
-const computer1 = new Computer();
-console.log(computer1, 'this is comp1')
-computer1.computerSendAttack(1, 2); 
 
 export default Computer
-export { computer1 }

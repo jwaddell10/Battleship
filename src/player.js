@@ -33,6 +33,5 @@ class Player {
         })
     }
 }
-const player1 = new Player();
 
-export { Player, player1 };
+export { Player }

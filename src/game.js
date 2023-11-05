@@ -5,34 +5,60 @@ and Gameboards. For now just
 
 import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
-import Ship, { shipsArray } from "./ship.js";
-import { Computer, computer1 } from './computer.js'
-import { Player, player1 } from './player.js'
+import Ship, { computerShipsArray, shipsArray } from "./ship.js";
+import Computer from './computer.js'
+import { Player } from './player.js'
 
 
 
 function game() {
 
-    const gameBoards = {
-        player1gameboard: new gameBoard(),
-        computergameboard: new gameBoard()
-    };
-    //eventually use crate ship function here
-    const ship1 = new Ship(6, 0, false, 1, 3, 'horizontal')
-    const ship2 = new Ship(4, 0, false, 5, 8, 'vertical')
-    const ship3 = new Ship(3, 0, false, 3, 4, 'horizontal');
-    shipsArray.push(ship1, ship2, ship3);
+    //create the players
+    const player = new Player('jon');
+    console.log(player, 'this is player')
+    const computer = new Computer()
+    console.log(computer, 'this is computer')
+    
+    //create the ships
+    const playerShips = 
+    [
+    new Ship(3, 0, false, 1, 3, 'horizontal'), 
+    new Ship(4, 0, false, 5, 8, 'vertical'), 
+    new Ship(3, 0, false, 3, 4, 'horizontal')
+    ];
+    
+    const computerShips = 
+    [
+    new Ship(3, 0, false, 1, 3, 'horizontal'), 
+    new Ship(4, 0, false, 2, 4, 'horizontal'), 
+    new Ship(3, 0, false, 6, 5, 'vertical')
+    ];
 
-    
-    
+    //place ships on the board
+    shipsArray.push(...playerShips);
+    computerShipsArray.push(...computerShips);
+
+    //create the gameboards for the players and place ships on the board
+    const playerGameboard = new gameBoard();
+    playerGameboard.placeShips(playerShips);
+    const computerGameboard = new gameBoard();
+    computerGameboard.placeShips(computerShips);
+
+    //render the board and ships onto the DOM
     renderBoard();
     renderComputerBoard();
-   
-    
-   
     renderPlayerShips();
     renderComputerShips();
-    console.log(gameBoards.player1gameboard, 'this is gameboards')
+
+    //begin the game
+    player.sendAttack();
+    //computerGameboard.receiveAttack(computerShips);
+
+    /*if (player.turn === true) {
+        player.sendAttack();
+    } else if (player.turn === false) {
+        computer1.sendAttack()
+    }*/
     
     
     //place ships
@@ -42,6 +68,7 @@ function game() {
     //if not, record miss and prevent another attack from happening
 }
 game();
+
 
 export { 
     game,

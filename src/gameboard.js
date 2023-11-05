@@ -70,5 +70,6 @@ class gameBoard {
         }
     }
 }
+const missedShotsArray = [];
 
 export { gameBoard }

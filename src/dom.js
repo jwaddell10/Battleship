@@ -1,5 +1,5 @@
 import { gameBoard } from "./gameboard.js";
-import { Ship, shipsArray } from "./ship.js";
+import { Ship, computerShipsArray, shipsArray } from "./ship.js";
 
 function renderBoard() {
     //create rows
@@ -76,7 +76,7 @@ function renderPlayerShips() {
 }
 
 function renderComputerShips() {
-    shipsArray.forEach((ship) => {
+    computerShipsArray.forEach((ship) => {
         const x = ship.x;
         const y = ship.y;
         const length = ship.length;

@@ -35,6 +35,7 @@ class Ship {
 }
 
 const shipsArray = []
+const computerShipsArray = []
 
 export default Ship
-export { shipsArray }
+export { shipsArray, computerShipsArray }
