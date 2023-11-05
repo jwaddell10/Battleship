@@ -1,6 +1,3 @@
-import { shipsArray, Ship }  from './ship.js'
-import { player1, Player } from './player.js'
-
 class gameBoard {
     constructor () {
         this.board = this.createBoard();

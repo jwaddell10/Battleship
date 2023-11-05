@@ -15,9 +15,7 @@ function game() {
 
     //create the players
     const player = new Player('jon');
-    console.log(player, 'this is player')
     const computer = new Computer()
-    console.log(computer, 'this is computer')
     
     //create the ships
     const playerShips = 
