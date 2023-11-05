@@ -50,7 +50,9 @@ function game() {
 
     //begin the game
     player.sendAttack();
-    computerGameboard.receiveAttack();
+    const x = player.sendAttack();
+    computerGameboard.receiveAttack(computerShips, x)
+      
     //how to send attack coordinates to opponents board???
 
     /*if (player.turn === true) {

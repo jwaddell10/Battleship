@@ -12,16 +12,21 @@ class Player {
     }
 
     sendAttack() {
+        const attackArray = [];
         const cell = document.querySelectorAll(`.computercell`);
         
         cell.forEach((item) => {
-            item.addEventListener('click', (e) => {
-                const attack = e.target.attributes.id
-                console.log(attack, 'send attack worked')
-                return attack;
+            item.addEventListener('click', () => {
+                const attack = item.id
+
+                const strSplit = attack.split('-');
+                const x = strSplit[1];
+                const y = strSplit[2];
+                return { x }
             })
         })
     }
+    
 }
 
 export { Player }

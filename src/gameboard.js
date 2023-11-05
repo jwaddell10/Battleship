@@ -36,11 +36,10 @@ class gameBoard {
     }
 
     receiveAttack(ships, x, y) {
-        console.log(value, 'this is value')
         let isHit = false; 
     
         ships.forEach((ship) => {
-            if (this.board[x][y] === this.board[ship.x][ship.y]) {
+            if (this.board[x][y] === ship) {
                 ship.shipWasHit();
                 ship.shipWasSunk(ship);
                 isHit = true; 
