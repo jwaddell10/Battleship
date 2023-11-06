@@ -16,6 +16,10 @@ function game() {
     //create the players
     const player = new Player('jon');
     const computer = new Computer()
+
+    player.setAttackHandler(function(x, y){
+        computerGameboard.receiveAttack(computerShips, x, y)
+      })
     
     //create the ships
     const playerShips = 
@@ -29,7 +33,7 @@ function game() {
     [
     new Ship(3, 0, false, 1, 3, 'horizontal'), 
     new Ship(4, 0, false, 2, 4, 'horizontal'), 
-    new Ship(3, 0, false, 6, 5, 'vertical')
+    new Ship(3, 0, false, 5, 9, 'vertical')
     ];
 
     //place ships on the board
@@ -41,6 +45,7 @@ function game() {
     playerGameboard.placeShips(playerShips);
     const computerGameboard = new gameBoard();
     computerGameboard.placeShips(computerShips);
+    console.log(computerGameboard, 'this is computerboard')
 
     //render the board and ships onto the DOM
     renderBoard();
@@ -50,8 +55,6 @@ function game() {
 
     //begin the game
     player.sendAttack();
-    const x = player.sendAttack();
-    computerGameboard.receiveAttack(computerShips, x)
       
     //how to send attack coordinates to opponents board???
 

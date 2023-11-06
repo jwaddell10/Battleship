@@ -55,14 +55,14 @@ function renderPlayerShips() {
             // Calculate the position based on orientation
             if (orientation === 'horizontal') {
               //place ships in cells
-                const cell = document.getElementById(`cell-${x}-${y + i + 1}`);
+                const cell = document.getElementById(`cell-${x}-${y + i}`);
                     if (cell) {
                         cell.appendChild(shipElement);
                     } else {
                     console.log(`Cell-${x}-${y} doesn't exist or is already filled`);
                     }
             } else if (orientation === 'vertical') {
-                const cell = document.getElementById(`cell-${x + i + 1}-${y}`);
+                const cell = document.getElementById(`cell-${x + i}-${y}`);
                     if (cell) {
                         cell.appendChild(shipElement);
                     } else if (cell === false) {
@@ -88,14 +88,14 @@ function renderComputerShips() {
             // Calculate the position based on orientation
             if (orientation === 'horizontal') {
               //place ships in cells
-                const cell = document.getElementById(`computercell-${x}-${y + i + 1}`);
+                const cell = document.getElementById(`computercell-${x}-${y + i}`);
                     if (cell) {
                         cell.appendChild(shipElement);
                     } else {
                     console.log(`ComputerCell-${x}-${y} doesn't exist or is already filled`);
                     }
             } else if (orientation === 'vertical') {
-                const cell = document.getElementById(`computercell-${x + i + 1}-${y}`);
+                const cell = document.getElementById(`computercell-${x + i}-${y}`);
                     if (cell) {
                         cell.appendChild(shipElement);
                     } else if (cell === false) {

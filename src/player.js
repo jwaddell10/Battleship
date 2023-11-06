@@ -1,8 +1,12 @@
 class Player {
-
     constructor(name) {
         this.name = name;
         this.turn = true;
+        this.handleAttack = function () {x, y}; // Define handleAttack as a callback property
+    }
+
+    setAttackHandler(coords) {
+        this.handleAttack = coords; // Set the handleAttack callback
     }
 
     checkAttack(x, y) {
@@ -14,19 +18,18 @@ class Player {
     sendAttack() {
         const attackArray = [];
         const cell = document.querySelectorAll(`.computercell`);
-        
+
         cell.forEach((item) => {
             item.addEventListener('click', () => {
-                const attack = item.id
+                const attack = item.id;
 
                 const strSplit = attack.split('-');
                 const x = strSplit[1];
                 const y = strSplit[2];
-                return { x, y }
-            })
-        })
+                this.handleAttack(x, y);
+            });
+        });
     }
-    
 }
 
 export { Player }

@@ -36,20 +36,30 @@ class gameBoard {
     }
 
     receiveAttack(ships, x, y) {
-        let isHit = false; 
+        let isHit = false;
     
         ships.forEach((ship) => {
-            if (this.board[x][y] === ship) {
-                ship.shipWasHit();
-                ship.shipWasSunk(ship);
-                isHit = true; 
+            for (let i = 0; i < ship.length; i++) {
+                if (ship.orientation === 'horizontal' && ship.x == x && ship.y + i == y) {
+                    // Hit on a horizontal ship
+                    ship.shipWasHit();
+                    ship.shipWasSunk(ship);
+                    isHit = true;
+                    break;
+                } else if (ship.orientation === 'vertical' && ship.x + i == x && ship.y == y) {
+                    // Hit on a vertical ship
+                    ship.shipWasHit();
+                    ship.shipWasSunk(ship);
+                    isHit = true;
+                    break;
+                }
             }
         });
     
         if (!isHit) {
             // If there was no hit, record the miss
-            this.missedAttacks.push(x, y);
-            console.log(this.missedAttacks, 'this is missed shots')
+            this.missedAttacks.push({ x, y });
+            console.log(this.missedAttacks, 'this is missed shots');
         }
     }
 
