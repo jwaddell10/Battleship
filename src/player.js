@@ -21,9 +21,12 @@ class Player {
         cells.forEach((cell) => {
             cell.addEventListener('click', () => {
                 const shipElement = cell.querySelector('.computership');
-    
                 if (shipElement) {
                     shipElement.style.backgroundColor = 'blue';
+                }
+
+                if (!shipElement) {
+                    cell.style.backgroundColor = 'green';
                 }
     
                 const attack = cell.id;
