@@ -90,3 +90,7 @@ body {
     background-color: red; /* Example background color for ships */
     display: inline-block;
 }
+
+#attack {
+    background-color: blue;
+}

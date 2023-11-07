@@ -16,15 +16,21 @@ class Player {
     }
 
     sendAttack() {
-        const cell = document.querySelectorAll(`.computercell`);
-
-        cell.forEach((item) => {
-            item.addEventListener('click', () => {
-                const attack = item.id;
-
+        const cells = document.querySelectorAll('.computercell');
+    
+        cells.forEach((cell) => {
+            cell.addEventListener('click', () => {
+                const shipElement = cell.querySelector('.computership');
+    
+                if (shipElement) {
+                    shipElement.style.backgroundColor = 'blue';
+                }
+    
+                const attack = cell.id;
                 const strSplit = attack.split('-');
                 const x = strSplit[1];
                 const y = strSplit[2];
+    
                 this.handleAttack(x, y);
             });
         });

@@ -3,7 +3,7 @@ and Gameboards. For now just
  populate each Gameboard with predetermined coordinates.
  You can implement a system for allowing players to place their ships later.*/
 
-import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderAttack } from "./dom.js";
+import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from './computer.js'
@@ -54,11 +54,9 @@ function game() {
 
     player.setAttackHandler(function(x, y) {
         computerGameboard.receiveAttack(computerShips, x, y);
-        for (let i = 0; i < computerShips.length; i++) { // Assuming a maximum of 3 coordinates per ship
-            const shipElement = document.getElementById(`computership-${x}-${y}-${i}`);
-            if (shipElement) {
-                shipElement.style.backgroundColor = 'blue';
-            }
+        
+        for (let i = 0; i < computerShips.length; i++) {
+
         }
     });
 
