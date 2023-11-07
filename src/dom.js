@@ -84,8 +84,8 @@ function renderComputerShips() {
 
         for (let i = 0; i < length; i++) {
             const shipElement = document.createElement('div');
-            shipElement.classList.add('ship');
-            shipElement.id = `ship-${x}-${y}`;
+            shipElement.classList.add('computership');
+            shipElement.id = `computership-${x}-${y}-${i}`;
 
             // Calculate the position based on orientation
             if (orientation === 'horizontal') {

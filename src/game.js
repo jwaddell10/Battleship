@@ -15,14 +15,7 @@ function game() {
 
     //create the players
     const player = new Player('jon');
-    const computer = new Computer()
-
-    player.setAttackHandler(function(x, y){
-        computerGameboard.receiveAttack(computerShips, x, y)
-        const shipElement = document.getElementById(`ship-${x}-${y}`);
-        console.log(shipElement, 'this is ship ele')
-        shipElement.style.backgroundColor = 'blue'
-      })
+    const computer = new Computer();
 
     //create the ships
     const playerShips = 
@@ -58,9 +51,17 @@ function game() {
  
     //begin the game
     player.sendAttack();    
-    //computerGameboard.receiveAttack(computerShips)
-    //if so, record attack, change tile color, prevent another attack from happening
-    //if not, record miss and prevent another attack from happening
+
+    player.setAttackHandler(function(x, y) {
+        computerGameboard.receiveAttack(computerShips, x, y);
+        for (let i = 0; i < computerShips.length; i++) { // Assuming a maximum of 3 coordinates per ship
+            const shipElement = document.getElementById(`computership-${x}-${y}-${i}`);
+            if (shipElement) {
+                shipElement.style.backgroundColor = 'blue';
+            }
+        }
+    });
+
 }
 game();
 
