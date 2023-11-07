@@ -1,7 +1,6 @@
 class Player {
     constructor(name) {
         this.name = name;
-        this.turn = true;
         this.handleAttack = function () {x, y}; // Define handleAttack as a callback property
     }
 
@@ -33,7 +32,6 @@ class Player {
                 const strSplit = attack.split('-');
                 const x = strSplit[1];
                 const y = strSplit[2];
-    
                 this.handleAttack(x, y);
             });
         });

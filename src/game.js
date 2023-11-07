@@ -1,8 +1,3 @@
-/*The game loop should set up a new game by creating Players 
-and Gameboards. For now just
- populate each Gameboard with predetermined coordinates.
- You can implement a system for allowing players to place their ships later.*/
-
 import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
@@ -10,12 +5,13 @@ import Computer from './computer.js'
 import { Player } from './player.js'
 
 
-
 function game() {
 
     //create the players
     const player = new Player('jon');
     const computer = new Computer();
+
+    let currentPlayer = player;
 
     //create the ships
     const playerShips = 
@@ -41,25 +37,42 @@ function game() {
     playerGameboard.placeShips(playerShips);
     const computerGameboard = new gameBoard();
     computerGameboard.placeShips(computerShips);
-    console.log(computerGameboard.hitShots, 'this is computerboard outside attackscope')
 
     //render the board and ships onto the DOM
     renderBoard();
     renderComputerBoard();
     renderPlayerShips();
     renderComputerShips();
- 
-    //begin the game
-    player.sendAttack();    
+   
+    //begin the game  
 
-    player.setAttackHandler(function(x, y) {
-        computerGameboard.receiveAttack(computerShips, x, y);
-        
-        for (let i = 0; i < computerShips.length; i++) {
-
+    function switchPlayerTurn() {
+        if (currentPlayer === player) {
+            currentPlayer = computer;
+        } else {
+            currentPlayer = player;
         }
-    });
+    }
+    switchPlayerTurn();
+console.log(currentPlayer, 'this is currentplayer');
+switchPlayerTurn();
+console.log(currentPlayer, 'this is currentplayer')
 
+    /*function playerTurn() {
+        player.sendAttack();  
+        player.setAttackHandler(function(x, y) {
+            computerGameboard.receiveAttack(computerShips, x, y);
+        });
+        computerTurn();
+    }
+
+    function computerTurn() {
+        computer.computerSendAttack();
+        computer.setAttackHandler(function(x, y) {
+            playerGameboard.receiveAttack(playerShips, x, y);
+        })
+    }
+    playerTurn();*/
 }
 game();
 

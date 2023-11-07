@@ -1,7 +1,11 @@
 class Computer {
     
     constructor() {
-        this.turn = false;
+        this.handleComputerAttack = function () {x, y}
+    }
+
+    setAttackHandler(coords) {
+        this.handleComputerAttack = coords; // Set the handleAttack callback
     }
 
     computerCheckAttack(x, y) {
@@ -11,9 +15,7 @@ class Computer {
     }
     
     generateRandomNumber() {
-        const x = Math.floor(Math.random() * 10);
-        const y = Math.floor(Math.random() * 10);
-        return { x, y }
+        return Math.floor(Math.random() * 10);
       }
 
     checkRepeatHits(x, y, shotsArray) {
@@ -25,11 +27,13 @@ class Computer {
         } else return coordinates
       }
 
-    computerSendAttack(x, y) {
-        shotsArray.push([x, y]);
+    computerSendAttack() {
+        const x = this.generateRandomNumber()
+        const y = this.generateRandomNumber()
+        console.log(x, y, 'this is xy')
+        shotsArray.push(x, y);
         this.computerCheckAttack(x, y);
         this.checkRepeatHits(x, y, shotsArray);
-        let computerAttack = this.board.board[x][y];
     }
 }
 const shotsArray = []
