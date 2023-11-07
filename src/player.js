@@ -16,7 +16,6 @@ class Player {
     }
 
     sendAttack() {
-        const attackArray = [];
         const cell = document.querySelectorAll(`.computercell`);
 
         cell.forEach((item) => {

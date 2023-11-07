@@ -2,6 +2,7 @@ class gameBoard {
     constructor () {
         this.board = this.createBoard();
         this.missedAttacks = []
+        this.hitShots = [];
     }
 
     createBoard() {
@@ -45,21 +46,26 @@ class gameBoard {
                     ship.shipWasHit();
                     ship.shipWasSunk(ship);
                     isHit = true;
-                    break;
+                    this.hitShots.push(x, y)
+                    console.log(this.hitShots, 'this is hit shots')
+                    return this.hitShots
                 } else if (ship.orientation === 'vertical' && ship.x + i == x && ship.y == y) {
                     // Hit on a vertical ship
                     ship.shipWasHit();
                     ship.shipWasSunk(ship);
                     isHit = true;
-                    break;
+                    this.hitShots.push(x, y)
+                    console.log(this.hitShots, 'this is hit shots');
+                    return this.hitShots
                 }
             }
         });
     
         if (!isHit) {
             // If there was no hit, record the miss
-            this.missedAttacks.push({ x, y });
+            this.missedAttacks.push(x, y);
             console.log(this.missedAttacks, 'this is missed shots');
+            return this.missedAttacks
         }
     }
 
@@ -78,5 +84,4 @@ class gameBoard {
     }
 }
 const missedShotsArray = [];
-
 export { gameBoard }

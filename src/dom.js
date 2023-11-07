@@ -1,5 +1,7 @@
-import { gameBoard } from "./gameboard.js";
 import { Ship, computerShipsArray, playerShipsArray } from "./ship.js";
+import { game, playerGameboard, computerGameboard } from './game.js'
+
+//console.log(computerGameboard, 'this is game')
 
 function renderBoard() {
     //create rows
@@ -83,7 +85,7 @@ function renderComputerShips() {
         for (let i = 0; i < length; i++) {
             const shipElement = document.createElement('div');
             shipElement.classList.add('ship');
-            shipElement.id = `ship-${x}-${y}-${i}`;
+            shipElement.id = `ship-${x}-${y}`;
 
             // Calculate the position based on orientation
             if (orientation === 'horizontal') {
@@ -105,6 +107,17 @@ function renderComputerShips() {
         }
     });
 }
+
+//render hits, check each cell 
+//need cell coordinates
+//need attack coordinates ( i have a shots array?)
+//need to see if they match
+//if they match change style of square
+
+//cell coords, const getelementbyid computercellxy or queryselectorall for classname
+//can i get results from shots array in here...
+
+//currently trying to import computer gameboard so i can manipulate it individually
 
 export {
     renderBoard, 

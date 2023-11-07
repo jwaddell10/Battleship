@@ -3,7 +3,7 @@ and Gameboards. For now just
  populate each Gameboard with predetermined coordinates.
  You can implement a system for allowing players to place their ships later.*/
 
-import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips } from "./dom.js";
+import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderAttack } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from './computer.js'
@@ -19,8 +19,11 @@ function game() {
 
     player.setAttackHandler(function(x, y){
         computerGameboard.receiveAttack(computerShips, x, y)
+        const shipElement = document.getElementById(`ship-${x}-${y}`);
+        console.log(shipElement, 'this is ship ele')
+        shipElement.style.backgroundColor = 'blue'
       })
-    
+
     //create the ships
     const playerShips = 
     [
@@ -45,35 +48,24 @@ function game() {
     playerGameboard.placeShips(playerShips);
     const computerGameboard = new gameBoard();
     computerGameboard.placeShips(computerShips);
-    console.log(computerGameboard, 'this is computerboard')
+    console.log(computerGameboard.hitShots, 'this is computerboard outside attackscope')
 
     //render the board and ships onto the DOM
     renderBoard();
     renderComputerBoard();
     renderPlayerShips();
     renderComputerShips();
-
+ 
     //begin the game
-    player.sendAttack();
-      
-    //how to send attack coordinates to opponents board???
-
-    /*if (player.turn === true) {
-        player.sendAttack();
-    } else if (player.turn === false) {
-        computer1.sendAttack()
-    }*/
-    
-    
-    //place ships
-    //player clicks on attack location, unique id is stored
-    //check for if attack coordinates matches ship coordinates
+    player.sendAttack();    
+    //computerGameboard.receiveAttack(computerShips)
     //if so, record attack, change tile color, prevent another attack from happening
     //if not, record miss and prevent another attack from happening
 }
 game();
 
-
 export { 
     game,
+    //playerGameboard,
+    //computerGameboard,
 }
