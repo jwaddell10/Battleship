@@ -1,32 +1,32 @@
-import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips } from "./dom.js";
+import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderPlayerAttacks } from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from './computer.js'
 import { Player } from './player.js'
 
 
-function game() {
+const player = new Player('jon');
+const computer = new Computer();
 
-    //create the players
-    const player = new Player('jon');
-    const computer = new Computer();
-
-    let currentPlayer = player;
-
-    //create the ships
-    const playerShips = 
+const playerShips = 
     [
     new Ship(3, 0, false, 1, 3, 'horizontal'), 
     new Ship(4, 0, false, 5, 8, 'vertical'), 
     new Ship(3, 0, false, 3, 4, 'horizontal')
     ];
     
-    const computerShips = 
+const computerShips = 
     [
     new Ship(3, 0, false, 1, 3, 'horizontal'), 
     new Ship(4, 0, false, 2, 4, 'horizontal'), 
     new Ship(3, 0, false, 5, 9, 'vertical')
     ];
+
+function game() {
+
+    //create the players
+
+    //create the ships
 
     //place ships on the board
     playerShipsArray.push(...playerShips);
@@ -46,6 +46,7 @@ function game() {
    
     //begin the game  
 
+    let currentPlayer = player;
     function switchPlayerTurn() {
         if (currentPlayer === player) {
             currentPlayer = computer;
@@ -53,31 +54,38 @@ function game() {
             currentPlayer = player;
         }
     }
-    switchPlayerTurn();
-console.log(currentPlayer, 'this is currentplayer');
-switchPlayerTurn();
-console.log(currentPlayer, 'this is currentplayer')
 
-    /*function playerTurn() {
+    function playerTurn() {
         player.sendAttack();  
         player.setAttackHandler(function(x, y) {
             computerGameboard.receiveAttack(computerShips, x, y);
+            switchPlayerTurn();
+            computerTurn();
         });
-        computerTurn();
     }
 
     function computerTurn() {
-        computer.computerSendAttack();
-        computer.setAttackHandler(function(x, y) {
-            playerGameboard.receiveAttack(playerShips, x, y);
-        })
+        if (currentPlayer !== computer) {
+            return;
+        } else {
+            const attackCoordinates = computer.computerSendAttack();
+            computer.computerSendAttack();
+            playerGameboard.receiveAttack(playerShips, attackCoordinates.x, attackCoordinates.y);
+            renderPlayerAttacks();
+            switchPlayerTurn();
+        }
     }
-    playerTurn();*/
+    playerTurn();
+
+    return {
+        playerShipsArray,
+        computerShipsArray
+    }
 }
 game();
 
-export { 
+export {
     game,
-    //playerGameboard,
-    //computerGameboard,
-}
+    computer, 
+    player,
+ }

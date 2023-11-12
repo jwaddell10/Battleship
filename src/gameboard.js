@@ -64,7 +64,6 @@ class gameBoard {
         if (!isHit) {
             // If there was no hit, record the miss
             this.missedAttacks.push(x, y);
-            console.log(this.missedAttacks, 'this is missed shots');
             return this.missedAttacks
         }
     }

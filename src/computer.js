@@ -23,17 +23,18 @@ class Computer {
         const hitsRepeat = shotsArray.some((coords) => coords[0] === x && coords[1] === y);
 
         if (hitsRepeat === true) {
-            console.log('you hit this already');
+            this.computerSendAttack();
         } else return coordinates
       }
 
     computerSendAttack() {
         const x = this.generateRandomNumber()
         const y = this.generateRandomNumber()
-        console.log(x, y, 'this is xy')
         shotsArray.push(x, y);
+        console.log(shotsArray, 'this is shotsarray')
         this.computerCheckAttack(x, y);
         this.checkRepeatHits(x, y, shotsArray);
+        return { x, y }
     }
 }
 const shotsArray = []
