@@ -49,4 +49,3 @@ class Computer {
 const shotsArray = [];
 
 export default Computer;
->>>>>>> d98e019209455566abb488ab702b2b15c579647a
