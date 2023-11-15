@@ -1,7 +1,7 @@
 import { computerShipsArray, playerShipsArray } from "./ship.js";
 import { computer } from "./game.js";
 
-function renderBoard() {
+function renderPlayerBoard() {
   const boardContainer = document.querySelector(".boardcontainer");
 
   for (let i = 0; i < 10; i++) {
@@ -140,7 +140,7 @@ function renderComputerAttacks() {
   }
 
 export {
-  renderBoard,
+  renderPlayerBoard,
   renderComputerBoard,
   renderPlayerShips,
   renderComputerShips,

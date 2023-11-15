@@ -36,7 +36,7 @@ computerGameboard.placeShips(computerShips);
 
 //render board and ships to DOM
 
-renderBoard();
+renderPlayerBoard();
 renderComputerBoard();
 renderPlayerShips();
 renderComputerShips();

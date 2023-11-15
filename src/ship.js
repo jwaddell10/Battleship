@@ -8,14 +8,14 @@ class Ship {
         this.orientation = orientation
     }
 
-    shipWasHit() {
+    wasHit() {
         // if ship was hit
         this.numberOfHits++
         console.log(this.numberOfHits, 'this is the # of hits');
         return this.numberOfHits
     }
 
-    shipWasSunk() {
+    wasSunk() {
         if (this.numberOfHits === this.length) {
             console.log(Ship, 'this ship is sunk');
             this.isSunk = true;
