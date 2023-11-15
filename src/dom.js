@@ -108,7 +108,7 @@ function renderComputerShips() {
 
 //take attackcoords, see if it matches a ship, if it doesn't, change style
 
-function renderPlayerAttacks() {
+function renderComputerAttacks() {
     console.log(computer.computerShots, "these are compshots");
   
     let x, y; // Define x and y outside the forEach loop
@@ -153,5 +153,5 @@ export {
   renderComputerBoard,
   renderPlayerShips,
   renderComputerShips,
-  renderPlayerAttacks
+  renderComputerAttacks
 };

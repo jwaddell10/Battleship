@@ -1,10 +1,4 @@
-import {
-  renderBoard,
-  renderComputerBoard,
-  renderPlayerShips,
-  renderComputerShips,
-  renderPlayerAttacks,
-} from "./dom.js";
+import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderComputerAttacks} from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from "./computer.js";
@@ -76,7 +70,7 @@ function game() {
         attackCoordinates.x,
         attackCoordinates.y,
       );
-      renderPlayerAttacks();
+      renderComputerAttacks();
       switchPlayerTurn();
     }
   }
