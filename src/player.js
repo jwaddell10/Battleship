@@ -25,7 +25,7 @@ class Player {
         if (shipElement) {
           shipElement.style.backgroundColor = "blue";
         }
-
+ 
         if (!shipElement) {
           cell.style.backgroundColor = "green";
         }
@@ -35,8 +35,8 @@ class Player {
         const x = strSplit[1];
         const y = strSplit[2];
         this.handleAttack(x, y);
-      });
-    });
+      }, {once: true});
+    })
   }
 }
 
