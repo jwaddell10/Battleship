@@ -105,13 +105,10 @@ function renderComputerShips() {
   });
 }
 
-//take attackcoords, see if it matches a ship, if it doesn't, change style
-
 function renderComputerAttacks() {
   
-    let x, y; // Define x and y outside the forEach loop
+    let x, y; 
   
-    // Iterate over computerShots and extract x and y
     computer.computerShots.map((num, index) => {
         if (index % 2 === 0) {
           x = num;
@@ -119,7 +116,6 @@ function renderComputerAttacks() {
           y = num;
         }
       })
-
     
     // Check if x and y are defined before using them
     if (x !== undefined && y !== undefined) {
