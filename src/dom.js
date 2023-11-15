@@ -109,7 +109,6 @@ function renderComputerShips() {
 //take attackcoords, see if it matches a ship, if it doesn't, change style
 
 function renderComputerAttacks() {
-    console.log(computer.computerShots, "these are compshots");
   
     let x, y; // Define x and y outside the forEach loop
   
@@ -123,7 +122,6 @@ function renderComputerAttacks() {
       })
 
     
-    console.log(x, y, 'this is xy')
     // Check if x and y are defined before using them
     if (x !== undefined && y !== undefined) {
       const cellId = `cell-${x}-${y}`;
@@ -134,8 +132,6 @@ function renderComputerAttacks() {
         const matchingShip = playerShipsArray.find(
           (ship) => ship.x == x && ship.y == y
         );
-  
-        console.log("Matching Ship:", matchingShip);
   
         if (matchingShip) {
           shipElement.style.backgroundColor = "blue";

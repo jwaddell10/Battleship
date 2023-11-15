@@ -28,13 +28,14 @@ class Computer {
   
     checkRepeatHits(x, y) {
       const coordinates = [x, y];
-      const hitsRepeat = this.computerShots.some(
-        (coords) => coords[0] === x && coords[1] === y
-      );
-  
-      if (hitsRepeat === true) {
+      console.log(coordinates, 'these are coords')
+    
+      this.computerShots.forEach((item) => {
+        console.log(item, 'this is item')
+      })
+      /*if (hitsRepeat === true) {
         this.computerSendAttack();
-      } else return coordinates;
+      } else return coordinates;*/
     }
   
     computerSendAttack() {
