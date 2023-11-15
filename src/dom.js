@@ -1,6 +1,5 @@
 import { computerShipsArray, playerShipsArray } from "./ship.js";
-import { game, playerGameboard, computerGameboard, computer } from "./game.js";
-import Computer from "./computer.js";
+import { computer } from "./game.js";
 
 function renderBoard() {
   const boardContainer = document.querySelector(".boardcontainer");

@@ -41,9 +41,8 @@ class gameBoard {
       ships.forEach((ship) => {
         for (let i = 0; i < ship.length; i++) {
           if (
-            ship.orientation === "horizontal" &&
-            ship.x == x &&
-            ship.y + i == y
+            ship.orientation === "horizontal" && 
+            ship.x == x && ship.y + i == y
           ) {
             // Hit on a horizontal ship
             ship.shipWasHit();
@@ -53,8 +52,7 @@ class gameBoard {
             return this.hitShots;
           } else if (
             ship.orientation === "vertical" &&
-            ship.x + i == x &&
-            ship.y == y
+            ship.x + i == x && ship.y == y
           ) {
             // Hit on a vertical ship
             ship.shipWasHit();
@@ -87,6 +85,6 @@ class gameBoard {
       }
     }
   }
-  const missedShotsArray = [];
+  
   export { gameBoard };
   

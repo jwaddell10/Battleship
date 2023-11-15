@@ -4,9 +4,13 @@ import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from "./computer.js";
 import { Player } from "./player.js";
 
+
+//create the players (and computer)
 const player = new Player("jon");
 const computer = new Computer();
 
+
+//create the ships
 const playerShips = [
   new Ship(3, 0, false, 1, 3, "horizontal"),
   new Ship(4, 0, false, 5, 8, "vertical"),
@@ -19,30 +23,29 @@ const computerShips = [
   new Ship(3, 0, false, 5, 9, "vertical"),
 ];
 
+//create shipsarray to hold ships
+
+playerShipsArray.push(...playerShips);
+computerShipsArray.push(...computerShips);
+
+//create gameboards and placeships on the board
+const playerGameboard = new gameBoard();
+playerGameboard.placeShips(playerShips);
+const computerGameboard = new gameBoard();
+computerGameboard.placeShips(computerShips);
+
+//render board and ships to DOM
+
+renderBoard();
+renderComputerBoard();
+renderPlayerShips();
+renderComputerShips();
+
+//begin game
 function game() {
-  //create the players
-
-  //create the ships
-
-  //place ships on the board
-  playerShipsArray.push(...playerShips);
-  computerShipsArray.push(...computerShips);
-
-  //create the gameboards for the players and place ships on the board
-  const playerGameboard = new gameBoard();
-  playerGameboard.placeShips(playerShips);
-  const computerGameboard = new gameBoard();
-  computerGameboard.placeShips(computerShips);
-
-  //render the board and ships onto the DOM
-  renderBoard();
-  renderComputerBoard();
-  renderPlayerShips();
-  renderComputerShips();
-
-  //begin the game
 
   let currentPlayer = player;
+  
   function switchPlayerTurn() {
     if (currentPlayer === player) {
       currentPlayer = computer;
@@ -53,6 +56,8 @@ function game() {
 
   function playerTurn() {
     player.sendAttack();
+
+    //function to pass attackCoords and handle execution of attack
     player.setAttackHandler(function (x, y) {
       computerGameboard.receiveAttack(computerShips, x, y);
       switchPlayerTurn();
@@ -65,11 +70,7 @@ function game() {
       return;
     } else {
       const attackCoordinates = computer.computerSendAttack();
-      playerGameboard.receiveAttack(
-        playerShips,
-        attackCoordinates.x,
-        attackCoordinates.y,
-      );
+      playerGameboard.receiveAttack(playerShips, attackCoordinates.x, attackCoordinates.y,);
       renderComputerAttacks();
       switchPlayerTurn();
     }
