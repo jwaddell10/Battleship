@@ -41,12 +41,8 @@ class Computer {
       }
       
       if (isDuplicate === true) {
-          console.log(xCoordinates, yCoordinates, x, y, 'this is xy')
-          console.log('its a duplicate')
           return true;
       } else {
-          console.log(xCoordinates, yCoordinates, x, y, 'this is xy')
-          console.log('its not a duplicate')
           return false;
       }
       }
@@ -54,9 +50,7 @@ class Computer {
     generateAttackCoordinates() {
       const x = this.generateRandomNumber();
       const y = this.generateRandomNumber();
-      //check repeat hits, if repeat hits returns true, call function again
       if (this.checkRepeatHits(x, y) !== false) {
-        console.log('checkrepeat is true now')
         const newXy = this.generateAttackCoordinates();
         return newXy;
       }
