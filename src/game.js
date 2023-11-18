@@ -1,4 +1,4 @@
-import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderComputerAttacks} from "./dom.js";
+import { renderPlayerBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderComputerAttacks} from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from "./computer.js";
