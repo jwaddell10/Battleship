@@ -67,7 +67,7 @@ function game() {
 
   function computerTurn() {
     if (currentPlayer !== computer) {
-      return;
+      switchPlayerTurn();
     } else {
       const attackCoordinates = computer.computerSendAttack();
       playerGameboard.receiveAttack(playerShips, attackCoordinates.x, attackCoordinates.y,);

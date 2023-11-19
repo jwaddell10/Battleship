@@ -106,38 +106,50 @@ function renderComputerShips() {
 }
 
 function renderComputerAttacks() {
-  
-    let x, y; 
-  
-    computer.computerShots.map((num, index) => {
+    let x, y;
+
+    // Iterate through computerShots to get x and y
+    computer.computerShots.forEach((num, index) => {
         if (index % 2 === 0) {
-          x = num;
+            x = num;
         } else if (index % 2 === 1) {
-          y = num;
+            y = num;
         }
-      })
-    
+    });
+
     // Check if x and y are defined before using them
     if (x !== undefined && y !== undefined) {
-      const cellId = `cell-${x}-${y}`;
-      const cell = document.getElementById(cellId);
-      const shipElement = document.querySelector(".ship");
-  
-      if (cell) {
-        const matchingShip = playerShipsArray.find(
-          (ship) => ship.x == x && ship.y == y
-        );
-  
-        if (matchingShip) {
-          shipElement.style.backgroundColor = "blue";
-          console.log("It's a hit!");
-          // Add logic for hit styling if needed
-        } else {
-          cell.style.backgroundColor = "green";
+        const cellId = `cell-${x}-${y}`;
+        const cell = document.getElementById(cellId);
+        const shipElement = cell.querySelector('.ship')
+
+        if (cell) {
+            // Initialize a variable to track if any ship is hit
+            let isHit = false;
+
+            // Use forEach to iterate through ships
+            playerShipsArray.forEach((ship) => {
+                if (
+                    (ship.orientation === 'horizontal' && x == ship.x && y >= ship.y && y <= ship.y + ship.length) ||
+                    (ship.orientation === 'vertical' && x >= ship.x && x <= ship.x + ship.length && y == ship.y)
+                ) {
+                    // Update the variable if a ship is hit
+                    isHit = true;
+                }
+            });
+
+            if (isHit === true) {
+                console.log(shipElement, 'this is shipelelenght')
+                
+                shipElement.style.backgroundColor = "blue";
+                console.log("It's a hit!");
+                // Add logic for hit styling if needed
+            } else {
+                cell.style.backgroundColor = "green";
+            }
         }
-      }
     }
-  }
+}
 
 export {
   renderPlayerBoard,
