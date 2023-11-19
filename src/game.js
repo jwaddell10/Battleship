@@ -1,4 +1,4 @@
-import { renderBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderComputerAttacks} from "./dom.js";
+import { renderPlayerBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderComputerAttacks} from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from "./computer.js";
@@ -67,7 +67,7 @@ function game() {
 
   function computerTurn() {
     if (currentPlayer !== computer) {
-      return;
+      switchPlayerTurn();
     } else {
       const attackCoordinates = computer.computerSendAttack();
       playerGameboard.receiveAttack(playerShips, attackCoordinates.x, attackCoordinates.y,);

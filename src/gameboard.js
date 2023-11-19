@@ -55,8 +55,8 @@ class gameBoard {
             ship.x + i == x && ship.y == y
           ) {
             // Hit on a vertical ship
-            ship.shipWasHit();
-            ship.shipWasSunk(ship);
+            ship.wasHit();
+            ship.wasSunk(ship);
             isHit = true;
             this.hitShots.push(x, y);
             return this.hitShots;

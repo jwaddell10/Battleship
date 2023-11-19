@@ -19,29 +19,47 @@ class Computer {
     generateRandomNumber() {
       return Math.floor(Math.random() * 10);
     }
+
+    checkRepeatHits(x, y) {
+        const xCoordinates = [];
+        const yCoordinates = [];
+        let isDuplicate;
+        
+      this.computerShots.forEach((value, index) => {
+          if (index % 2 === 0) {
+              xCoordinates.push(value)
+          } else if (index % 2 === 1) {
+              yCoordinates.push(value)
+          }
+      })
+  
+      for (let i = 0; i < xCoordinates.length; i++) {
+          if (xCoordinates[i] == x && yCoordinates[i] == y) {
+              isDuplicate = true;
+              break;
+          }
+      }
+      
+      if (isDuplicate === true) {
+          return true;
+      } else {
+          return false;
+      }
+      }
   
     generateAttackCoordinates() {
       const x = this.generateRandomNumber();
       const y = this.generateRandomNumber();
+      if (this.checkRepeatHits(x, y) !== false) {
+        const newXy = this.generateAttackCoordinates();
+        return newXy;
+      }
+      //this.checkRepeatHits(x, y);
       return { x, y };
-    }
-  
-    checkRepeatHits(x, y) {
-      const coordinates = [x, y];
-      console.log(coordinates, 'these are coords')
-    
-      this.computerShots.forEach((item) => {
-        console.log(item, 'this is item')
-      })
-      /*if (hitsRepeat === true) {
-        this.computerSendAttack();
-      } else return coordinates;*/
     }
   
     computerSendAttack() {
       const { x, y } = this.generateAttackCoordinates();
-      this.computerCheckAttack(x, y);
-      this.checkRepeatHits(x, y);
       this.computerShots.push(x, y);
       return this.computerShots;
     }
