@@ -12,15 +12,17 @@ const computer = new Computer();
 
 //create the ships
 const playerShips = [
-  new Ship(3, 0, false, 1, 3, "horizontal"),
-  new Ship(4, 0, false, 5, 8, "vertical"),
-  new Ship(3, 0, false, 3, 4, "horizontal"),
+  new Ship(5, 0, false, undefined, undefined, 'vertical'),
+  new Ship(4, 0, false, undefined, undefined, 'horizontal'),
+  new Ship(3, 0, false, undefined, undefined, 'vertical'),
+  new Ship(2, 0, false, undefined, undefined, 'horizontal'),
 ];
 
 const computerShips = [
-  new Ship(3, 0, false, 1, 3, "horizontal"),
-  new Ship(4, 0, false, 2, 4, "horizontal"),
-  new Ship(3, 0, false, 5, 9, "vertical"),
+    new Ship(5, 0, false, undefined, undefined, 'vertical'),
+    new Ship(4, 0, false, undefined, undefined, 'horizontal'),
+    new Ship(3, 0, false, undefined, undefined, 'vertical'),
+    new Ship(2, 0, false, undefined, undefined, 'horizontal'),
 ];
 
 //create shipsarray to hold ships
@@ -31,8 +33,10 @@ computerShipsArray.push(...computerShips);
 //create gameboards and placeships on the board
 const playerGameboard = new gameBoard();
 playerGameboard.placeShips(playerShips);
+//playerGameboard.checkShips(playerShips);
 const computerGameboard = new gameBoard();
 computerGameboard.placeShips(computerShips);
+//computerGameboard.checkShips(computerShips)
 
 //render board and ships to DOM
 

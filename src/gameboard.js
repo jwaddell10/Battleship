@@ -18,21 +18,68 @@ class gameBoard {
       }
       return board;
     }
-  
-    placeShips(ships) {
-      ships.forEach((ship) => {
-        const { x, y, orientation } = ship;
-  
-        if (orientation === "horizontal") {
-          for (let i = 0; i < ship.length; i++) {
-            this.board[ship.x][ship.y + i] = ship;
-          }
-        } else if (orientation === "vertical") {
-          for (let i = 0; i < ship.length; i++) {
-            this.board[ship.x + i][ship.y] = ship;
-          }
-        }
-      });
+
+    checkShips(ships) {
+        ships.forEach((ship) => {
+            const { x, y, orientation, length } = ship;
+            
+            if (orientation === 'horizontal' && y + length > 10) {
+                console.log(x, y, orientation, ship, 'This ship is too big');
+                // Adjust the ship's position to fit within the board
+                ship.y = Math.max(0, 10 - length); // Adjust to the maximum valid position
+            } else if (orientation === 'vertical' && x + length > 10) {
+                console.log(x, y, orientation, ship, 'This ship is too vertical');
+                // Adjust the ship's position to fit within the board
+                ship.x = Math.max(0, 10 - length); // Adjust to the maximum valid position
+            }
+        });
+    }
+    generateCoordinate() {
+        return Math.floor(Math.random() * 10);
+      }
+
+      placeShips(ships) {
+        console.log(ships, 'these are ships');
+        ships.forEach((ship) => {
+            let { x, y, orientation, length } = ship;
+            // Check if the cells for the ship placement are empty
+            let canPlaceShip = true;
+    
+            if (orientation === "horizontal") {
+                for (let i = 0; i < length; i++) {
+                    const currentCell = this.board[x] && this.board[x][y + i];
+                    if (currentCell !== "." || currentCell === undefined) {
+                        canPlaceShip = false;
+                        break;
+                    }
+                }
+            } else if (orientation === "vertical") {
+                for (let i = 0; i < length; i++) {
+                    const currentCell = this.board[x + i] && this.board[x + i][y];
+                    if (currentCell !== "." || currentCell === undefined) {
+                        canPlaceShip = false;
+                        break;
+                    }
+                }
+            }
+    
+            // Place the ship on the board if the cells are empty
+            if (!canPlaceShip) {
+                ship.x = this.generateCoordinate();
+                ship.y = this.generateCoordinate();
+                this.placeShips([ship]);
+            } else {
+                if (orientation === 'horizontal') {
+                    for (let i = 0; i < length; i++) {
+                        this.board[x][y + i] = ship;
+                    }
+                } else if (orientation === 'vertical') {
+                    for (let i = 0; i < length; i++) {
+                        this.board[x + i][y] = ship;
+                    }
+                }
+            }
+        });
     }
   
     receiveAttack(ships, x, y) {
@@ -74,7 +121,7 @@ class gameBoard {
     allShipsSunk(ships) {
       let allShipsSunk = false;
   
-      const shipsSunk = ships.filter((ship) => ship.shipWasSunk() === true);
+      const shipsSunk = ships.filter((ship) => ship.wasSunk() === true);
   
       if (shipsSunk.length !== ships.length) {
         allShipsSunk = false;
@@ -84,7 +131,7 @@ class gameBoard {
         return allShipsSunk;
       }
     }
-  }
+}
 
   export { gameBoard };
   
