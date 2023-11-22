@@ -20,10 +20,8 @@ class Ship {
 
   wasSunk() {
     if (this.numberOfHits === this.length) {
-      console.log("The ship is sunk.");
       this.isSunk = true;
     } else {
-      console.log("The ship is not sunk.");
       this.isSunk = false;
     }
     return this.isSunk;

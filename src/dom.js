@@ -144,8 +144,8 @@ function renderComputerAttacks() {
             // Use forEach to iterate through ships
             playerShipsArray.forEach((ship) => {
                 if (
-                    (ship.orientation === 'horizontal' && x == ship.x && y >= ship.y && y <= ship.y + ship.length) ||
-                    (ship.orientation === 'vertical' && x >= ship.x && x <= ship.x + ship.length && y == ship.y)
+                    (ship.orientation === 'horizontal' && x == ship.x && y >= ship.y && y < ship.y + ship.length) ||
+                    (ship.orientation === 'vertical' && x >= ship.x && x < ship.x + ship.length && y == ship.y)
                 ) {
                     // Update the variable if a ship is hit
                     isHit = true;
@@ -153,6 +153,7 @@ function renderComputerAttacks() {
             });
 
             if (isHit === true) {
+              console.log(x, y)
                 console.log(shipElement, 'this is shipelement')
                 
                 shipElement.style.backgroundColor = "blue";

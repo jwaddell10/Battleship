@@ -9,27 +9,6 @@ class Player {
   setAttackHandler(coords) {
     this.handleAttack = coords; // Set the handleAttack callback
   }
-  
-  clickHandler = (event) => {
-    const cell = event.currentTarget
-    const shipElement = cell.querySelector(".computership");
-        if (shipElement) {
-          shipElement.style.backgroundColor = "blue";
-        }
- 
-        if (!shipElement) {
-          cell.style.backgroundColor = "green";
-        }
-
-        const attack = cell.id;
-        const strSplit = attack.split("-");
-        const x = strSplit[1];
-        console.log(x, 'this is x')
-        const y = strSplit[2];
-        console.log(y, 'this is y')
-        this.handleAttack(x, y);
-    }
-  
 
   checkAttack(x, y) {
     if (x < 0 || x > 10 || y < 0 || y > 10) {
@@ -39,10 +18,32 @@ class Player {
 
   sendAttack() {
     const cells = document.querySelectorAll(".computercell");
-
+  
+    const clickHandler = (event) => {
+      const cell = event.currentTarget;
+      const shipElement = cell.querySelector(".computership");
+  
+      if (shipElement) {
+        shipElement.style.backgroundColor = "blue";
+      }
+  
+      if (!shipElement) {
+        cell.style.backgroundColor = "green";
+      }
+  
+      const attack = cell.id;
+      const strSplit = attack.split("-");
+      const x = strSplit[1];
+      const y = strSplit[2];
+      this.handleAttack(x, y);
+  
+      // Remove the event listener after the attack has been sent
+      cell.removeEventListener("click", clickHandler);
+    };
+  
     cells.forEach((cell) => {
-      cell.addEventListener("click", this.clickHandler) 
-    })
+      cell.addEventListener("click", clickHandler);
+    });
   }
 }
 
