@@ -5,6 +5,3 @@ import gameBoard from './gameboard.js';
 import { renderBoard } from './dom.js';
 import './styles/styles.css'
 import { game, computer, player, computerGameboard, playerGameboard, computerShips, playerShips } from './game.js'
-
-const shipsSunk = computerGameboard.allShipsSunk(computerShips);
-const cells = document.querySelectorAll('.computercell');

@@ -3,6 +3,7 @@ import { computer } from "./game.js";
 
 function renderPlayerBoard() {
   const boardContainer = document.querySelector(".boardcontainer");
+  boardContainer.innerHTML = ''
 
   for (let i = 0; i < 10; i++) {
     const row = document.createElement("div");
@@ -21,6 +22,7 @@ function renderPlayerBoard() {
 
 function renderComputerBoard() {
   const boardContainer = document.querySelector(".computerboardcontainer");
+  boardContainer.innerHTML = ''
 
   for (let i = 0; i < 10; i++) {
     const row = document.createElement("div");
@@ -37,73 +39,85 @@ function renderComputerBoard() {
   }
 }
 
-function renderPlayerShips() {
-  playerShipsArray.forEach((ship) => {
-    const x = ship.x;
-    const y = ship.y;
-    const length = ship.length;
-    const orientation = ship.orientation;
-
-    for (let i = 0; i < length; i++) {
-      const shipElement = document.createElement("div");
-      shipElement.classList.add("ship");
-      shipElement.id = `ship-${x}-${y}-${i}`;
-
-      // Calculate the position based on orientation
-      if (orientation === "horizontal") {
-        //place ships in cells
-        const cell = document.getElementById(`cell-${x}-${y + i}`);
-        if (cell) {
-          cell.appendChild(shipElement);
-        } else {
-          console.log(`Cell-${x}-${y} doesn't exist or is already filled`);
-        }
-      } else if (orientation === "vertical") {
-        const cell = document.getElementById(`cell-${x + i}-${y}`);
-        if (cell) {
-          cell.appendChild(shipElement);
-        } else if (cell === false) {
-          return;
-        }
-      }
-    }
-  });
-}
-
-function renderComputerShips() {
-  computerShipsArray.forEach((ship) => {
-    const x = ship.x;
-    const y = ship.y;
-    const length = ship.length;
-    const orientation = ship.orientation;
-
-    for (let i = 0; i < length; i++) {
-      const shipElement = document.createElement("div");
-      shipElement.classList.add("computership");
-      shipElement.id = `computership-${x}-${y}-${i}`;
-
-      // Calculate the position based on orientation
-      if (orientation === "horizontal") {
-        //place ships in cells
-        const cell = document.getElementById(`computercell-${x}-${y + i}`);
-        if (cell) {
-          cell.appendChild(shipElement);
-        } else {
-          console.log(
-            `ComputerCell-${x}-${y} doesn't exist or is already filled`
-          );
-        }
-      } else if (orientation === "vertical") {
-        const cell = document.getElementById(`computercell-${x + i}-${y}`);
-        if (cell) {
-          cell.appendChild(shipElement);
-        } else if (cell === false) {
-          return;
+function renderPlayerShips(ships) {
+    // Clear only the cells that are part of the game board
+    const cells = document.querySelectorAll('.boardcontainer .cell');
+    cells.forEach(cell => {
+      cell.innerHTML = ''; // Clear the cell content
+    });
+  
+    ships.forEach((ship) => {
+      const x = ship.x;
+      const y = ship.y;
+      const length = ship.length;
+      const orientation = ship.orientation;
+  
+      for (let i = 0; i < length; i++) {
+        const shipElement = document.createElement("div");
+        shipElement.classList.add("ship");
+        shipElement.id = `ship-${x}-${y}-${i}`;
+  
+        // Calculate the position based on orientation
+        if (orientation === "horizontal") {
+          // Place ships in cells
+          const cell = document.getElementById(`cell-${x}-${y + i}`);
+          if (cell) {
+            cell.appendChild(shipElement);
+          } else {
+            console.log(`Cell-${x}-${y} doesn't exist or is already filled`);
+          }
+        } else if (orientation === "vertical") {
+          const cell = document.getElementById(`cell-${x + i}-${y}`);
+          if (cell) {
+            cell.appendChild(shipElement);
+          } else if (cell === false) {
+            return;
+          }
         }
       }
-    }
-  });
-}
+    });
+  }
+  
+  function renderComputerShips(ships) {
+    // Clear only the cells that are part of the game board
+    const cells = document.querySelectorAll('.computerboardcontainer .computercell');
+    cells.forEach(cell => {
+      cell.innerHTML = ''; // Clear the cell content
+    });
+  
+    ships.forEach((ship) => {
+      const x = ship.x;
+      const y = ship.y;
+      const length = ship.length;
+      const orientation = ship.orientation;
+  
+      for (let i = 0; i < length; i++) {
+        const shipElement = document.createElement("div");
+        shipElement.classList.add("computership");
+        shipElement.id = `computership-${x}-${y}-${i}`;
+  
+        // Calculate the position based on orientation
+        if (orientation === "horizontal") {
+          // Place ships in cells
+          const cell = document.getElementById(`computercell-${x}-${y + i}`);
+          if (cell) {
+            cell.appendChild(shipElement);
+          } else {
+            console.log(
+              `ComputerCell-${x}-${y} doesn't exist or is already filled`
+            );
+          }
+        } else if (orientation === "vertical") {
+          const cell = document.getElementById(`computercell-${x + i}-${y}`);
+          if (cell) {
+            cell.appendChild(shipElement);
+          } else if (cell === false) {
+            return;
+          }
+        }
+      }
+    });
+  }
 
 function renderComputerAttacks() {
     let x, y;

@@ -5,25 +5,36 @@ import Computer from "./computer.js";
 import { Player } from "./player.js";
 
 
+//add restart button; 
+//add message that player won or lost
+
 
 //create the players (and computer)
 const player = new Player("jon");
 const computer = new Computer();
 
 //create the ships
-const playerShips = [
-  new Ship(5, 0, false, undefined, undefined, 'vertical'),
-  new Ship(4, 0, false, undefined, undefined, 'horizontal'),
-  new Ship(3, 0, false, undefined, undefined, 'vertical'),
-  new Ship(2, 0, false, undefined, undefined, 'horizontal'),
-];
-
-const computerShips = [
+function createShips() {
+  const playerShips = [
     new Ship(5, 0, false, undefined, undefined, 'vertical'),
     new Ship(4, 0, false, undefined, undefined, 'horizontal'),
     new Ship(3, 0, false, undefined, undefined, 'vertical'),
     new Ship(2, 0, false, undefined, undefined, 'horizontal'),
-];
+  ];
+  
+  const computerShips = [
+      new Ship(5, 0, false, undefined, undefined, 'vertical'),
+      new Ship(4, 0, false, undefined, undefined, 'horizontal'),
+      new Ship(3, 0, false, undefined, undefined, 'vertical'),
+      new Ship(2, 0, false, undefined, undefined, 'horizontal'),
+  ];
+  return {
+    playerShips,
+    computerShips,
+  }
+}
+const { playerShips, computerShips} = createShips();
+
 
 //create shipsarray to hold ships
 
@@ -40,13 +51,27 @@ computerGameboard.placeShips(computerShips);
 
 //render board and ships to DOM
 
-renderPlayerBoard();
-renderComputerBoard();
-renderPlayerShips();
-renderComputerShips();
+  renderPlayerBoard();
+  renderComputerBoard();
+  renderPlayerShips(playerShipsArray);
+  renderComputerShips(computerShipsArray);
+
+
 
 //begin game
 function game() {
+
+
+  const restart = document.querySelector("#restartbutton");
+  restart.addEventListener('click', () => {
+    const { playerShips, computerShips } = createShips();
+    playerGameboard.placeShips(playerShips)
+    computerGameboard.placeShips(computerShips);
+    // Reset playerShipsArray and computerShipsArray
+    renderPlayerShips(playerShips);
+    renderComputerShips(computerShips);
+  });
+
 
   let currentPlayer = player;
   
