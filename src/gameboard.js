@@ -39,7 +39,6 @@ class gameBoard {
       }
 
       placeShips(ships) {
-        console.log(ships, 'these are ships');
         ships.forEach((ship) => {
             let { x, y, orientation, length } = ship;
             // Check if the cells for the ship placement are empty

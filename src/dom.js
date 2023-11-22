@@ -139,7 +139,7 @@ function renderComputerAttacks() {
             });
 
             if (isHit === true) {
-                console.log(shipElement, 'this is shipelelenght')
+                console.log(shipElement, 'this is shipelement')
                 
                 shipElement.style.backgroundColor = "blue";
                 console.log("It's a hit!");

@@ -5,10 +5,10 @@ import Computer from "./computer.js";
 import { Player } from "./player.js";
 
 
+
 //create the players (and computer)
 const player = new Player("jon");
 const computer = new Computer();
-
 
 //create the ships
 const playerShips = [
@@ -58,18 +58,30 @@ function game() {
     }
   }
 
+  function handlePlayerAttack() {
+    const shipsSunk = computerGameboard.allShipsSunk(computerShips) 
+    const cells = document.querySelectorAll('.computercell')
+      if (shipsSunk === true) {
+        cells.forEach((cell) => {
+          cell.removeEventListener('click', player.clickHandler)
+        })
+      }
+  }
+
   function playerTurn() {
     player.sendAttack();
 
     //function to pass attackCoords and handle execution of attack
     player.setAttackHandler(function (x, y) {
+      handlePlayerAttack();
       computerGameboard.receiveAttack(computerShips, x, y);
-      switchPlayerTurn();
-      computerTurn();
+        switchPlayerTurn();
+        computerTurn();
     });
   }
 
   function computerTurn() {
+    handlePlayerAttack();
     if (currentPlayer !== computer) {
       switchPlayerTurn();
     } else {
@@ -89,4 +101,4 @@ function game() {
 
 game();
 
-export { game, computer, player };
+export { game, computer, player, computerGameboard, playerGameboard, computerShips, playerShips };

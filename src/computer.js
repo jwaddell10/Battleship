@@ -65,5 +65,4 @@ class Computer {
     }
   }
   
-  export default Computer;
-  
+export default Computer;
