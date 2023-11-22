@@ -5,9 +5,9 @@ import Computer from "./computer.js";
 import { Player } from "./player.js";
 
 
-//add restart button; 
-//add message that player won or lost
-
+//make restart button delete everything within board container (even cells hit already)
+//style playertext
+//make it so if computer wins the game stops also
 
 //create the players (and computer)
 const player = new Player("jon");
@@ -87,10 +87,20 @@ function game() {
     const shipsSunk = computerGameboard.allShipsSunk(computerShips) 
     const cells = document.querySelectorAll('.computercell')
       if (shipsSunk === true) {
+        const winText = document.createElement('div');
+        winText.textContent = 'Player Wins!';
+        winText.classList.add('win-text'); // Add a class for styling if needed
+    
+        // Append the text to your HTML (replace 'container-id' with the actual container ID)
+        const container = document.querySelector('.flexcontainer');
+        container.appendChild(winText);
         cells.forEach((cell) => {
           cell.removeEventListener('click', player.clickHandler)
         })
+        
       }
+
+      
   }
 
   function playerTurn() {

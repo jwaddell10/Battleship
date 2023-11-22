@@ -87,10 +87,17 @@ body {
 .computership {
     width: 2vw; /* Make the ship as wide as the cell */
     height: 2vw; /* Make the ship as tall as the cell */
-    background-color: #0b043c; /* Example background color for ships */
+    background-color: #0b043c;
     display: inline-block;
 }
 
 #attack {
     background-color: blue;
 }
+
+.win-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    /* Add more styles as needed */
+  }
