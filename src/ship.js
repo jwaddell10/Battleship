@@ -1,29 +1,31 @@
 class Ship {
-    constructor(length, numberOfHits, isSunk, x, y, orientation) {
-        this.length = length;
-        this.numberOfHits = numberOfHits;
-        this.isSunk = isSunk;
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation
-    }
+  constructor(length, numberOfHits = 0, isSunk = false, orientation) {
+    this.length = length;
+    this.numberOfHits = numberOfHits;
+    this.isSunk = isSunk;
+    this.x = this.generateCoordinate();
+    this.y = this.generateCoordinate();
+    this.orientation = orientation || (Math.random() < 0.5 ? 'horizontal' : 'vertical');
+  }
 
-    wasHit() {
-        // if ship was hit
-        this.numberOfHits++
-        console.log(this.numberOfHits, 'this is the # of hits');
-        return this.numberOfHits
-    }
+  generateCoordinate() {
+    return Math.floor(Math.random() * 10);
+  }
 
-    wasSunk() {
-        if (this.numberOfHits === this.length) {
-            console.log(Ship, 'this ship is sunk');
-            this.isSunk = true;
-        } else {
-            console.log(Ship, 'this ship is not sunk');
-            this.isSunk = false;
-        } return this.isSunk;
+  wasHit() {
+    this.numberOfHits++;
+    console.log(`${this.numberOfHits} hits on the ship.`);
+    return this.numberOfHits;
+  }
+
+  wasSunk() {
+    if (this.numberOfHits === this.length) {
+      this.isSunk = true;
+    } else {
+      this.isSunk = false;
     }
+    return this.isSunk;
+  }
 }
 
 const playerShipsArray = []
