@@ -85,31 +85,30 @@ function game() {
   }
 
   function handlePlayerAttack() {
-    const shipsSunk = computerGameboard.allShipsSunk(computerShips) 
-    const cells = document.querySelectorAll('.computercell')
-      if (shipsSunk === true) {
-        const winText = document.createElement('div');
-        winText.textContent = 'Player Wins!';
-        winText.classList.add('win-text'); // Add a class for styling if needed
-    
-        // Append the text to your HTML (replace 'container-id' with the actual container ID)
-        const container = document.querySelector('.winnertextcontainer');
-        container.appendChild(winText);
-        cells.forEach((cell) => {
-          cell.removeEventListener('click', player.clickHandler)
-        })
-        
-      }
-
-      
+    const computerShipsSunk = computerGameboard.allShipsSunk(computerShips);
+    const playerShipsSunk = playerGameboard.allShipsSunk(playerShips);
+  
+    const winText = document.createElement('div');
+    winText.textContent = computerShipsSunk ? 'Player Wins!' : playerShipsSunk ? 'Computer Wins!' : '';
+  
+    if (winText.textContent) {
+      winText.classList.add('win-text');
+      const container = document.querySelector('.winnertextcontainer');
+      container.appendChild(winText);
+  
+      const cells = document.querySelectorAll('.computercell');
+      cells.forEach((cell) => {
+        cell.removeEventListener('click', player.clickHandler);
+      });
+    }
   }
 
   function playerTurn() {
+    handlePlayerAttack();
     player.sendAttack();
 
     //function to pass attackCoords and handle execution of attack
     player.setAttackHandler(function (x, y) {
-      handlePlayerAttack();
       computerGameboard.receiveAttack(computerShips, x, y);
         switchPlayerTurn();
         computerTurn();
@@ -117,14 +116,22 @@ function game() {
   }
 
   function computerTurn() {
-    handlePlayerAttack();
     if (currentPlayer !== computer) {
       switchPlayerTurn();
     } else {
       const attackCoordinates = computer.computerSendAttack();
-      playerGameboard.receiveAttack(playerShips, attackCoordinates.x, attackCoordinates.y,);
+  
+      let x, y; // Declare x and y here
+  
+      for (let i = 0; i < attackCoordinates.length; i += 2) {
+        x = attackCoordinates[i];
+        y = attackCoordinates[i + 1];
+      }
+      playerGameboard.receiveAttack(playerShips, x, y);
       renderComputerAttacks();
-      switchPlayerTurn();
+  
+      switchPlayerTurn(); // Move this outside the loop
+      handlePlayerAttack();
     }
   }
   playerTurn();
