@@ -18,7 +18,7 @@ class Player {
         }
  
         if (!shipElement) {
-          cell.style.backgroundColor = "green";
+          cell.style.backgroundColor = "white";
         }
 
         const attack = cell.id;

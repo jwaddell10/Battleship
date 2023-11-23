@@ -160,7 +160,7 @@ function renderComputerAttacks() {
                 console.log("It's a hit!");
                 // Add logic for hit styling if needed
             } else {
-                cell.style.backgroundColor = "green";
+                cell.style.backgroundColor = "white";
             }
         }
     }

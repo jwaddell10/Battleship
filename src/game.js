@@ -8,6 +8,7 @@ import { Player } from "./player.js";
 //make restart button delete everything within board container (even cells hit already)
 //style playertext
 //make it so if computer wins the game stops also
+//improve styling generally   
 
 //create the players (and computer)
 const player = new Player("jon");
@@ -92,7 +93,7 @@ function game() {
         winText.classList.add('win-text'); // Add a class for styling if needed
     
         // Append the text to your HTML (replace 'container-id' with the actual container ID)
-        const container = document.querySelector('.flexcontainer');
+        const container = document.querySelector('.winnertextcontainer');
         container.appendChild(winText);
         cells.forEach((cell) => {
           cell.removeEventListener('click', player.clickHandler)
