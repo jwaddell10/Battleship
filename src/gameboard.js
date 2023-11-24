@@ -19,6 +19,10 @@ class gameBoard {
     return board;
   }
 
+  clearBoard() {
+    this.board = this.createBoard();
+  }
+
   checkShips(ships) {
       ships.forEach((ship) => {
           const { x, y, orientation, length } = ship;
@@ -38,7 +42,8 @@ class gameBoard {
       return Math.floor(Math.random() * 10);
     }
 
-    placeShips(ships) {
+  placeShips(ships) {
+    const boardcontainer = document.querySelector('.boardcontainer')
       ships.forEach((ship) => {
           let { x, y, orientation, length } = ship;
           // Check if the cells for the ship placement are empty
@@ -64,6 +69,7 @@ class gameBoard {
   
           // Place the ship on the board if the cells are empty
           if (!canPlaceShip) {
+          
               ship.x = this.generateCoordinate();
               ship.y = this.generateCoordinate();
               this.placeShips([ship]);

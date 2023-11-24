@@ -65,4 +65,11 @@ class Computer {
   }
 }
 
+
+const myFunction = () => {
+  console.log('Yo')
+}
+
+myFunction();
+
 export default Computer;

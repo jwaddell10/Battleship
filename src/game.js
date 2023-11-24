@@ -66,8 +66,16 @@ function game() {
   const restart = document.querySelector("#restartbutton");
   restart.addEventListener('click', () => {
     const { playerShips, computerShips } = createShips();
+
+    console.log(playerGameboard.board, computerGameboard, 'this is player, then computer before')
+
+    playerGameboard.clearBoard()
+    computerGameboard.clearBoard()
+    // console.log(playerGameboard.board, computerGameboard, 'this is player, then computer cleared')
+
     playerGameboard.placeShips(playerShips)
     computerGameboard.placeShips(computerShips);
+    console.log(playerGameboard, computerGameboard, 'this is player, then computer after')
     // Reset playerShipsArray and computerShipsArray
     renderPlayerShips(playerShips);
     renderComputerShips(computerShips);
