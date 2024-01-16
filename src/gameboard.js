@@ -29,12 +29,10 @@ class gameBoard {
 
       if (orientation === "horizontal" && y + length > 10) {
         console.log(x, y, orientation, ship, "This ship is too big");
-        // Adjust the ship's position to fit within the board
-        ship.y = Math.max(0, 10 - length); // Adjust to the maximum valid position
+        ship.y = Math.max(0, 10 - length); 
       } else if (orientation === "vertical" && x + length > 10) {
         console.log(x, y, orientation, ship, "This ship is too vertical");
-        // Adjust the ship's position to fit within the board
-        ship.x = Math.max(0, 10 - length); // Adjust to the maximum valid position
+        ship.x = Math.max(0, 10 - length);
       }
     });
   }
@@ -46,7 +44,6 @@ class gameBoard {
     const boardcontainer = document.querySelector(".boardcontainer");
     ships.forEach((ship) => {
       let { x, y, orientation, length } = ship;
-      // Check if the cells for the ship placement are empty
       let canPlaceShip = true;
 
       if (orientation === "horizontal") {
@@ -67,7 +64,6 @@ class gameBoard {
         }
       }
 
-      // Place the ship on the board if the cells are empty
       if (!canPlaceShip) {
         ship.x = this.generateCoordinate();
         ship.y = this.generateCoordinate();
@@ -96,7 +92,6 @@ class gameBoard {
           ship.x == x &&
           ship.y + i == y
         ) {
-          // Hit on a horizontal ship
           ship.wasHit();
           ship.wasSunk(ship);
           isHit = true;
@@ -107,7 +102,6 @@ class gameBoard {
           ship.x + i == x &&
           ship.y == y
         ) {
-          // Hit on a vertical ship
           ship.wasHit();
           ship.wasSunk(ship);
           isHit = true;
@@ -118,7 +112,6 @@ class gameBoard {
     });
 
     if (!isHit) {
-      // If there was no hit, record the miss
       this.missedAttacks.push(x, y);
       return this.missedAttacks;
     }

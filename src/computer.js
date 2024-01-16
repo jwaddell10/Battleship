@@ -7,7 +7,7 @@ class Computer {
   }
 
   setAttackHandler(coords) {
-    this.handleComputerAttack = coords; // Set the handleAttack callback
+    this.handleComputerAttack = coords;
   }
 
   computerCheckAttack(x, y) {
@@ -54,7 +54,6 @@ class Computer {
       const newXy = this.generateAttackCoordinates();
       return newXy;
     }
-    //this.checkRepeatHits(x, y);
     return { x, y };
   }
 

@@ -3,11 +3,11 @@ class Player {
     this.name = name;
     this.handleAttack = function () {
       x, y;
-    }; // Define handleAttack as a callback property
+    };
   }
 
   setAttackHandler(coords) {
-    this.handleAttack = coords; // Set the handleAttack callback
+    this.handleAttack = coords;
   }
 
   clickHandler = (event) => {
@@ -32,7 +32,7 @@ class Player {
 
   checkAttack(x, y) {
     if (x < 0 || x > 10 || y < 0 || y > 10) {
-      return; // Invalid attack, outside the 10x10 grid
+      return;
     }
   }
 

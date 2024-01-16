@@ -40,10 +40,9 @@ function renderComputerBoard() {
 }
 
 function renderPlayerShips(ships) {
-  // Clear only the cells that are part of the game board
   const cells = document.querySelectorAll(".boardcontainer .cell");
   cells.forEach((cell) => {
-    cell.innerHTML = ""; // Clear the cell content
+    cell.innerHTML = "";
   });
 
   ships.forEach((ship) => {
@@ -57,9 +56,7 @@ function renderPlayerShips(ships) {
       shipElement.classList.add("ship");
       shipElement.id = `ship-${x}-${y}-${i}`;
 
-      // Calculate the position based on orientation
       if (orientation === "horizontal") {
-        // Place ships in cells
         const cell = document.getElementById(`cell-${x}-${y + i}`);
         if (cell) {
           cell.appendChild(shipElement);
@@ -79,12 +76,11 @@ function renderPlayerShips(ships) {
 }
 
 function renderComputerShips(ships) {
-  // Clear only the cells that are part of the game board
   const cells = document.querySelectorAll(
     ".computerboardcontainer .computercell"
   );
   cells.forEach((cell) => {
-    cell.innerHTML = ""; // Clear the cell content
+    cell.innerHTML = "";
   });
 
   ships.forEach((ship) => {
@@ -98,9 +94,7 @@ function renderComputerShips(ships) {
       shipElement.classList.add("computership");
       shipElement.id = `computership-${x}-${y}-${i}`;
 
-      // Calculate the position based on orientation
       if (orientation === "horizontal") {
-        // Place ships in cells
         const cell = document.getElementById(`computercell-${x}-${y + i}`);
         if (cell) {
           cell.appendChild(shipElement);
@@ -124,7 +118,6 @@ function renderComputerShips(ships) {
 function renderComputerAttacks() {
   let x, y;
 
-  // Iterate through computerShots to get x and y
   computer.computerShots.forEach((num, index) => {
     if (index % 2 === 0) {
       x = num;
@@ -133,17 +126,14 @@ function renderComputerAttacks() {
     }
   });
 
-  // Check if x and y are defined before using them
   if (x !== undefined && y !== undefined) {
     const cellId = `cell-${x}-${y}`;
     const cell = document.getElementById(cellId);
     const shipElement = cell.querySelector(".ship");
 
     if (cell) {
-      // Initialize a variable to track if any ship is hit
       let isHit = false;
 
-      // Use forEach to iterate through ships
       playerShipsArray.forEach((ship) => {
         if (
           (ship.orientation === "horizontal" &&
@@ -155,7 +145,6 @@ function renderComputerAttacks() {
             x < ship.x + ship.length &&
             y == ship.y)
         ) {
-          // Update the variable if a ship is hit
           isHit = true;
         }
       });
@@ -166,7 +155,6 @@ function renderComputerAttacks() {
 
         shipElement.style.backgroundColor = "blue";
         console.log("It's a hit!");
-        // Add logic for hit styling if needed
       } else {
         cell.style.backgroundColor = "white";
       }
