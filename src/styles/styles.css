@@ -26,7 +26,7 @@ body {
 }
 
 .boardcontainer {
-    border: 2px solid;
+    border: 1vw solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(-45deg, #00d9ff, #fff);
     box-sizing: content-box;

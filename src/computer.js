@@ -21,31 +21,31 @@ class Computer {
   }
 
   checkRepeatHits(x, y) {
-      const xCoordinates = [];
-      const yCoordinates = [];
-      let isDuplicate;
-      
+    const xCoordinates = [];
+    const yCoordinates = [];
+    let isDuplicate;
+
     this.computerShots.forEach((value, index) => {
-        if (index % 2 === 0) {
-            xCoordinates.push(value)
-        } else if (index % 2 === 1) {
-            yCoordinates.push(value)
-        }
-    })
+      if (index % 2 === 0) {
+        xCoordinates.push(value);
+      } else if (index % 2 === 1) {
+        yCoordinates.push(value);
+      }
+    });
 
     for (let i = 0; i < xCoordinates.length; i++) {
-        if (xCoordinates[i] == x && yCoordinates[i] == y) {
-            isDuplicate = true;
-            break;
-        }
+      if (xCoordinates[i] == x && yCoordinates[i] == y) {
+        isDuplicate = true;
+        break;
+      }
     }
-    
+
     if (isDuplicate === true) {
-        return true;
+      return true;
     } else {
-        return false;
+      return false;
     }
-    }
+  }
 
   generateAttackCoordinates() {
     const x = this.generateRandomNumber();
@@ -65,10 +65,9 @@ class Computer {
   }
 }
 
-
 const myFunction = () => {
-  console.log('Yo')
-}
+  console.log("Yo");
+};
 
 myFunction();
 

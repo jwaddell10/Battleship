@@ -9,27 +9,26 @@ class Player {
   setAttackHandler(coords) {
     this.handleAttack = coords; // Set the handleAttack callback
   }
-  
+
   clickHandler = (event) => {
-    const cell = event.currentTarget
+    const cell = event.currentTarget;
     const shipElement = cell.querySelector(".computership");
-        if (shipElement) {
-          shipElement.style.backgroundColor = "blue";
-        }
- 
-        if (!shipElement) {
-          cell.style.backgroundColor = "white";
-        }
-
-        const attack = cell.id;
-        const strSplit = attack.split("-");
-        const x = strSplit[1];
-        const y = strSplit[2];
-        this.handleAttack(x, y);
-
-        cell.removeEventListener('click', this.clickHandler)
+    if (shipElement) {
+      shipElement.style.backgroundColor = "blue";
     }
-  
+
+    if (!shipElement) {
+      cell.style.backgroundColor = "white";
+    }
+
+    const attack = cell.id;
+    const strSplit = attack.split("-");
+    const x = strSplit[1];
+    const y = strSplit[2];
+    this.handleAttack(x, y);
+
+    cell.removeEventListener("click", this.clickHandler);
+  };
 
   checkAttack(x, y) {
     if (x < 0 || x > 10 || y < 0 || y > 10) {
@@ -41,8 +40,8 @@ class Player {
     const cells = document.querySelectorAll(".computercell");
 
     cells.forEach((cell) => {
-      cell.addEventListener("click", this.clickHandler) 
-    })
+      cell.addEventListener("click", this.clickHandler);
+    });
   }
 }
 

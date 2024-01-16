@@ -5,7 +5,8 @@ class Ship {
     this.isSunk = isSunk;
     this.x = this.generateCoordinate();
     this.y = this.generateCoordinate();
-    this.orientation = orientation || (Math.random() < 0.5 ? 'horizontal' : 'vertical');
+    this.orientation =
+      orientation || (Math.random() < 0.5 ? "horizontal" : "vertical");
   }
 
   generateCoordinate() {
@@ -28,8 +29,8 @@ class Ship {
   }
 }
 
-const playerShipsArray = []
-const computerShipsArray = []
+const playerShipsArray = [];
+const computerShipsArray = [];
 
-export default Ship
-export { playerShipsArray, computerShipsArray }
+export default Ship;
+export { playerShipsArray, computerShipsArray };

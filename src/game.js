@@ -1,14 +1,19 @@
-import { renderPlayerBoard, renderComputerBoard, renderPlayerShips, renderComputerShips, renderComputerAttacks} from "./dom.js";
+import {
+  renderPlayerBoard,
+  renderComputerBoard,
+  renderPlayerShips,
+  renderComputerShips,
+  renderComputerAttacks,
+} from "./dom.js";
 import { gameBoard } from "./gameboard.js";
 import Ship, { computerShipsArray, playerShipsArray } from "./ship.js";
 import Computer from "./computer.js";
 import { Player } from "./player.js";
 
-
 //make restart button delete everything within board container (even cells hit already)
 //style playertext
 //make it so if computer wins the game stops also
-//improve styling generally   
+//improve styling generally
 
 //create the players (and computer)
 const player = new Player("jon");
@@ -17,25 +22,24 @@ const computer = new Computer();
 //create the ships
 function createShips() {
   const playerShips = [
-    new Ship(5, 0, false, undefined, undefined, 'vertical'),
-    new Ship(4, 0, false, undefined, undefined, 'horizontal'),
-    new Ship(3, 0, false, undefined, undefined, 'vertical'),
-    new Ship(2, 0, false, undefined, undefined, 'horizontal'),
+    new Ship(5, 0, false, undefined, undefined, "vertical"),
+    new Ship(4, 0, false, undefined, undefined, "horizontal"),
+    new Ship(3, 0, false, undefined, undefined, "vertical"),
+    new Ship(2, 0, false, undefined, undefined, "horizontal"),
   ];
-  
+
   const computerShips = [
-      new Ship(5, 0, false, undefined, undefined, 'vertical'),
-      new Ship(4, 0, false, undefined, undefined, 'horizontal'),
-      new Ship(3, 0, false, undefined, undefined, 'vertical'),
-      new Ship(2, 0, false, undefined, undefined, 'horizontal'),
+    new Ship(5, 0, false, undefined, undefined, "vertical"),
+    new Ship(4, 0, false, undefined, undefined, "horizontal"),
+    new Ship(3, 0, false, undefined, undefined, "vertical"),
+    new Ship(2, 0, false, undefined, undefined, "horizontal"),
   ];
   return {
     playerShips,
     computerShips,
-  }
+  };
 }
-const { playerShips, computerShips} = createShips();
-
+const { playerShips, computerShips } = createShips();
 
 //create shipsarray to hold ships
 
@@ -52,38 +56,42 @@ computerGameboard.placeShips(computerShips);
 
 //render board and ships to DOM
 
-  renderPlayerBoard();
-  renderComputerBoard();
-  renderPlayerShips(playerShipsArray);
-  renderComputerShips(computerShipsArray);
-
-
+renderPlayerBoard();
+renderComputerBoard();
+renderPlayerShips(playerShipsArray);
+renderComputerShips(computerShipsArray);
 
 //begin game
 function game() {
-
-
   const restart = document.querySelector("#restartbutton");
-  restart.addEventListener('click', () => {
+  restart.addEventListener("click", () => {
     const { playerShips, computerShips } = createShips();
 
-    console.log(playerGameboard.board, computerGameboard, 'this is player, then computer before')
+    console.log(
+      playerGameboard.board,
+      computerGameboard,
+      "this is player, then computer before"
+    );
 
-    playerGameboard.clearBoard()
-    computerGameboard.clearBoard()
+    playerGameboard.clearBoard();
+    computerGameboard.clearBoard();
+
     // console.log(playerGameboard.board, computerGameboard, 'this is player, then computer cleared')
 
-    playerGameboard.placeShips(playerShips)
+    playerGameboard.placeShips(playerShips);
     computerGameboard.placeShips(computerShips);
-    console.log(playerGameboard, computerGameboard, 'this is player, then computer after')
+    console.log(
+      playerGameboard,
+      computerGameboard,
+      "this is player, then computer after"
+    );
     // Reset playerShipsArray and computerShipsArray
     renderPlayerShips(playerShips);
     renderComputerShips(computerShips);
   });
 
-
   let currentPlayer = player;
-  
+
   function switchPlayerTurn() {
     if (currentPlayer === player) {
       currentPlayer = computer;
@@ -95,18 +103,22 @@ function game() {
   function handlePlayerAttack() {
     const computerShipsSunk = computerGameboard.allShipsSunk(computerShips);
     const playerShipsSunk = playerGameboard.allShipsSunk(playerShips);
-  
-    const winText = document.createElement('div');
-    winText.textContent = computerShipsSunk ? 'Player Wins!' : playerShipsSunk ? 'Computer Wins!' : '';
-  
+
+    const winText = document.createElement("div");
+    winText.textContent = computerShipsSunk
+      ? "Player Wins!"
+      : playerShipsSunk
+      ? "Computer Wins!"
+      : "";
+
     if (winText.textContent) {
-      winText.classList.add('win-text');
-      const container = document.querySelector('.winnertextcontainer');
+      winText.classList.add("win-text");
+      const container = document.querySelector(".winnertextcontainer");
       container.appendChild(winText);
-  
-      const cells = document.querySelectorAll('.computercell');
+
+      const cells = document.querySelectorAll(".computercell");
       cells.forEach((cell) => {
-        cell.removeEventListener('click', player.clickHandler);
+        cell.removeEventListener("click", player.clickHandler);
       });
     }
   }
@@ -118,8 +130,8 @@ function game() {
     //function to pass attackCoords and handle execution of attack
     player.setAttackHandler(function (x, y) {
       computerGameboard.receiveAttack(computerShips, x, y);
-        switchPlayerTurn();
-        computerTurn();
+      switchPlayerTurn();
+      computerTurn();
     });
   }
 
@@ -128,16 +140,16 @@ function game() {
       switchPlayerTurn();
     } else {
       const attackCoordinates = computer.computerSendAttack();
-  
+
       let x, y; // Declare x and y here
-  
+
       for (let i = 0; i < attackCoordinates.length; i += 2) {
         x = attackCoordinates[i];
         y = attackCoordinates[i + 1];
       }
       playerGameboard.receiveAttack(playerShips, x, y);
       renderComputerAttacks();
-  
+
       switchPlayerTurn(); // Move this outside the loop
       handlePlayerAttack();
     }
@@ -152,4 +164,12 @@ function game() {
 
 game();
 
-export { game, computer, player, computerGameboard, playerGameboard, computerShips, playerShips };
+export {
+  game,
+  computer,
+  player,
+  computerGameboard,
+  playerGameboard,
+  computerShips,
+  playerShips,
+};
