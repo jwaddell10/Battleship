@@ -13,7 +13,7 @@ import { Player } from "./player.js";
 //create the players (and computer)
 const player = new Player("jon");
 const computer = new Computer();
-
+console.log(gameBoard.allShipsSunk, 'this is allshipssunk')
 //create the ships
 function createShips() {
   const playerShips = [
@@ -67,6 +67,7 @@ function game() {
   restart.addEventListener('click', () => {
     const { playerShips, computerShips } = createShips();
     playerGameboard.placeShips(playerShips)
+    console.log(playerGameboard, 'this is playergameboard')
     computerGameboard.placeShips(computerShips);
     // Reset playerShipsArray and computerShipsArray
     renderPlayerShips(playerShips);
@@ -134,7 +135,7 @@ function game() {
       handlePlayerAttack();
     }
   }
-  playerTurn();
+  playerTurn(); 
 
   return {
     playerShipsArray,
