@@ -61,13 +61,6 @@ function game() {
 	const restart = document.querySelector("#restartbutton");
 	restart.addEventListener("click", () => {
 		window.location.reload();
-		// const { playerShips, computerShips } = createShips();
-		// playerGameboard.placeShips(playerShips);
-		// console.log(playerGameboard, "this is playergameboard");
-		// computerGameboard.placeShips(computerShips);
-		// // Reset playerShipsArray and computerShipsArray
-		// renderPlayerShips(playerShips);
-		// renderComputerShips(computerShips);
 	});
 
 	let currentPlayer = player;
